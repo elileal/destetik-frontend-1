@@ -16,8 +16,10 @@ export class PersonalData extends Component {
   async componentDidMount() {
     const { id } = this.props.auth.user;
     const response = await api.get(`/api/user/${id}`);
-    const { name, email, phone } = response.data;
+    const { name, email } = response.data;
     let street, district, houseNumber;
+    street = district = houseNumber = '';
+    const phone = response.data.phone ? response.data.phone : '';
     if (response.data.address) {
       street = response.data.address.street;
       district = response.data.address.district;
