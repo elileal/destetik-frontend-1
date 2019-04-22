@@ -24,7 +24,7 @@ class Filters extends React.Component {
         <DropdownMenu>
           <DropdownItem>Manicure</DropdownItem>
           <DropdownItem>Pedicure</DropdownItem>
-          <DropdownItem>Limpeza de Pele</DropdownItem>
+          <DropdownItem>Hidratação</DropdownItem>
         </DropdownMenu>
       </Dropdown>
     );
