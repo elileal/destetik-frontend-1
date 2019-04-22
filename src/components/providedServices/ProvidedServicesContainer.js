@@ -1,33 +1,39 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Input, InputGroup, Button } from 'reactstrap';
+import api from '../../services/api';
+
 import Filters from './Filters';
 import ProvidedService from './ProvidedService';
 
 export class ProvidedServicesContainer extends Component {
   state = {
     search: '',
-    users: [
-      {
-        name: 'Ester Gabrielly Cecília Fernandes',
-        rating: '4.8',
-        minimumPrice: '30.00'
-      },
-      {
-        name: 'Maria de Jesus Silva',
-        rating: '4.3',
-        minimumPrice: '20.00'
-      },
-      {
-        name: 'Patrícia Mendes de Nascimento',
-        rating: '4.5',
-        minimumPrice: '28.00'
-      }
-    ],
+    users: [],
     filteredUsers: []
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.setState({ filteredUsers: this.state.users });
+    const response = await api.get('/api/user');
+    let usersWithServices = response.data.filter(
+      user => user.services.length > 0
+    );
+    usersWithServices = usersWithServices.map(user => {
+      let minimumPrice = 10000;
+      user.services.forEach(service => {
+        if (service.price < minimumPrice) minimumPrice = service.price;
+      });
+      return {
+        id: user._id,
+        name: user.name,
+        rating: user.rating,
+        services: user.services,
+        minimumPrice
+      };
+    });
+    console.log(usersWithServices);
+    this.setState({ users: usersWithServices });
+    this.setState({ filteredUsers: usersWithServices });
   }
 
   handleOnChange = e => {
