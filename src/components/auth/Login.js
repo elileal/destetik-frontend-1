@@ -37,9 +37,7 @@ export class Login extends Component {
     e.preventDefault();
     const { email, password } = this.state;
     const user = { email, password };
-    console.log(user);
     this.props.loginUser(user);
-    console.log(user);
   };
 
   render() {
