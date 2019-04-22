@@ -2,6 +2,10 @@
   font-family: 'Oswald', sans-serif;
 }
 
+.dropdown-menu-div:hover {
+  cursor: pointer;
+}
+
 .Side-menu-default {
   height: 100%;
 }

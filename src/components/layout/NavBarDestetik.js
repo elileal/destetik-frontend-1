@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -42,21 +41,15 @@ class NavBarDestetik extends React.Component {
 
     const authLinks = (
       <DropdownMenu right>
-        <Link to='/profile/edit'>
-          <DropdownItem>Profile</DropdownItem>
-        </Link>
+        <DropdownItem href='/profile/edit'>Profile</DropdownItem>
         <DropdownItem onClick={this.handleLogout}>Logout</DropdownItem>
       </DropdownMenu>
     );
 
     const guestLinks = (
       <DropdownMenu right>
-        <Link to='/login'>
-          <DropdownItem>Login</DropdownItem>
-        </Link>
-        <Link to='/signup'>
-          <DropdownItem>Registro</DropdownItem>
-        </Link>
+        <DropdownItem href='/login'>Login</DropdownItem>
+        <DropdownItem href='/signup'>Registro</DropdownItem>
       </DropdownMenu>
     );
 
@@ -68,12 +61,15 @@ class NavBarDestetik extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className='ml-auto' navbar>
               <NavItem>
-                <Link to='/services'>
-                  <NavLink>Serviços</NavLink>
-                </Link>
+                <NavLink href='/services'>Serviços</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
+                <DropdownToggle
+                  className='dropdown-menu-div'
+                  tag='div'
+                  nav
+                  caret
+                >
                   {user.name ? `Olá ${user.name}` : 'Login'}
                   {isAuthenticated ? authLinks : guestLinks}
                 </DropdownToggle>
