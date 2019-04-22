@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Container, Col } from 'reactstrap';
-import SidebarMenu from './SidebarMenu';
-import PersonalData from './PersonalData';
-import AddService from './AddService';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
+import SidebarMenu from './SidebarMenu';
+import PersonalData from './PersonalData';
+import AddService from './AddService';
+import DeleteAccount from './DeleteAccount';
 
 export class EditProfile extends Component {
   componentDidMount() {
@@ -35,6 +37,11 @@ export class EditProfile extends Component {
             exact
             path={`${this.props.match.path}/add-servicos`}
             component={AddService}
+          />
+          <Route
+            exact
+            path={`${this.props.match.path}/excluir-conta`}
+            component={DeleteAccount}
           />
         </Col>
       </Container>
