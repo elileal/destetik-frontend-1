@@ -31,7 +31,7 @@ function ProvidedService(props) {
         </Col>
         <Col sm='5' style={{ ...styleCol, flexDirection: 'column' }}>
           <p style={{ margin: 2 + 'px' }}>{props.name}</p>
-          <p style={{ margin: 2 + 'px' }}>{props.rating}</p>
+          <p style={{ margin: 2 + 'px' }}>4.5</p>
         </Col>
         <Col sm='2' style={styleCol}>
           <Media
@@ -46,7 +46,9 @@ function ProvidedService(props) {
           />
         </Col>
         <Col sm='3' style={styleCol}>
-          <p>A partir de R$ {props.minimumPrice}</p>
+          <p style={{ margin: 2 + 'px' }}>
+            A partir de R$ {props.minimumPrice}
+          </p>
         </Col>
       </Row>
       <hr />
