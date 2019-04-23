@@ -72,7 +72,7 @@ export class Register extends Component {
           />
           <Button type='submit'>Registre-se</Button>
           <p style={{ marginTop: 16 + 'px' }}>
-            Já registrado? <a href='/'>Faça o login aqui.</a>
+            Já registrado? <a href='/login'>Faça o login aqui.</a>
           </p>
         </Form>
       </>

@@ -60,7 +60,7 @@ export class Login extends Component {
           />
           <Button type='submit'>Login</Button>
           <p style={{ marginTop: 16 + 'px' }}>
-            Ainda não registrado? <a href='/'>Registre-se aqui.</a>
+            Ainda não registrado? <a href='/signup'>Registre-se aqui.</a>
           </p>
         </Form>
       </>
