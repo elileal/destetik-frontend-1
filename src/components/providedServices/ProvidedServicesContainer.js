@@ -33,7 +33,6 @@ export class ProvidedServicesContainer extends Component {
         minimumPrice
       };
     });
-    console.log(usersWithServices);
     this.setState({ users: usersWithServices });
     this.setState({ filteredUsers: usersWithServices });
   }
@@ -74,6 +73,7 @@ export class ProvidedServicesContainer extends Component {
             {this.state.filteredUsers.map(user => {
               return (
                 <ProvidedService
+                  key={user.id}
                   name={user.name}
                   rating={user.rating}
                   minimumPrice={user.minimumPrice}
