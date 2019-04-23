@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
-import { Button, Row } from 'reactstrap';
+import { Button, Row, Table } from 'reactstrap';
 import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ModalService from './ModalService';
 import api from '../../services/api';
+
+import ModalServiceUpdate from './ModalServiceUpdate';
+import ModalService from './ModalService';
 
 export class AddService extends Component {
   state = {
     modal: false,
-    servicesName: []
+    modalUpdate: false,
+    services: [],
+    providedServices: [],
+    addService: {
+      service: '',
+      price: ''
+    },
+    updateService: {
+      id: '',
+      newPrice: ''
+    }
   };
 
   toggle = () => {
@@ -19,11 +31,100 @@ export class AddService extends Component {
     }));
   };
 
+  toggleUpdate = e => {
+    if (e) {
+      e.preventDefault();
+      const serviceId = e.target.parentNode.parentNode.parentNode.getAttribute(
+        'data-key'
+      );
+      this.setState({
+        updateService: {
+          id: serviceId
+        }
+      });
+    }
+    this.setState(prevState => ({
+      modalUpdate: !prevState.modalUpdate
+    }));
+  };
+
   async componentDidMount() {
     const response = await api.get('/api/provided/avaliable');
-    const servicesName = response.data.map(service => service.name);
-    this.setState({ servicesName });
+    const services = response.data;
+    this.setState({ services });
+    const responseProvided = await api.get('/api/provided/show');
+    const providedServices = responseProvided.data.map(providedService => ({
+      id: providedService._id,
+      name: providedService.serviceId.name,
+      price: providedService.price
+    }));
+    this.setState({ providedServices });
   }
+
+  handleServiceOnChange = e => {
+    this.setState({
+      addService: {
+        ...this.state.addService,
+        service: e.target.value
+      }
+    });
+  };
+
+  handlePriceOnChange = e => {
+    this.setState({
+      addService: {
+        ...this.state.addService,
+        price: e.target.value
+      }
+    });
+  };
+
+  handlePriceUpdateOnChange = e => {
+    this.setState({
+      updateService: {
+        ...this.state.updateService,
+        newPrice: e.target.value
+      }
+    });
+  };
+
+  addService = async () => {
+    const response = await api.post(
+      '/api/provided/create',
+      this.state.addService
+    );
+    const newProvidedService = {
+      id: response.data._id,
+      price: this.state.addService.price,
+      name: this.state.addService.service
+    };
+    this.setState({
+      providedServices: [...this.state.providedServices, newProvidedService]
+    });
+    this.toggle();
+  };
+
+  updateService = async e => {
+    const { newPrice } = this.state.updateService;
+    await api.patch(`/api/provided/update/${this.state.updateService.id}`, {
+      price: newPrice
+    });
+    this.toggleUpdate();
+    window.location.reload();
+  };
+
+  deleteService = async e => {
+    e.preventDefault();
+    const serviceId = e.target.parentNode.parentNode.parentNode.getAttribute(
+      'data-key'
+    );
+    const response = await api.delete(`/api/provided/delete/${serviceId}`);
+    console.log(response);
+    const providedServices = this.state.providedServices.filter(
+      providedService => providedService.id !== serviceId
+    );
+    this.setState({ providedServices });
+  };
 
   render() {
     const styleTitle = {
@@ -33,7 +134,6 @@ export class AddService extends Component {
     const styleContainer = {
       height: 70 + '%',
       display: 'flex',
-      alignItems: 'center',
       justifyContent: 'center'
     };
 
@@ -51,7 +151,33 @@ export class AddService extends Component {
         <Row style={styleTitle}>
           <h1>Serviços Disponíveis</h1>
         </Row>
-        <Row style={styleContainer}>Container</Row>
+        <Row style={styleContainer}>
+          <Table responsive>
+            <thead>
+              <tr>
+                <th>Serviço</th>
+                <th>Preço</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.providedServices.map(providedService => (
+                <tr key={providedService.id} data-key={providedService.id}>
+                  <td>{providedService.name}</td>
+                  <td>{providedService.price}</td>
+                  <td>
+                    <a href='edit' onClick={this.toggleUpdate}>
+                      <i className='fas fa-edit' />
+                    </a>{' '}
+                    <a href='#' onClick={this.deleteService}>
+                      <i className='fas fa-trash' />
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Row>
         <Row style={styleFloat}>
           <Fab size='medium' onClick={this.toggle}>
             <Icon>add_icon</Icon>
@@ -61,9 +187,18 @@ export class AddService extends Component {
           <Button>Salvar</Button>
         </Row>
         <ModalService
+          services={this.state.services}
           modal={this.state.modal}
+          handlePriceOnChange={this.handlePriceOnChange}
+          handleServiceOnChange={this.handleServiceOnChange}
           toggle={this.toggle}
-          servicesName={this.state.servicesName}
+          addService={this.addService}
+        />
+        <ModalServiceUpdate
+          modal={this.state.modalUpdate}
+          toggle={this.toggleUpdate}
+          updateService={this.updateService}
+          handlePriceUpdateOnChange={this.handlePriceUpdateOnChange}
         />
       </>
     );
