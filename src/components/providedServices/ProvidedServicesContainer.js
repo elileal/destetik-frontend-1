@@ -28,6 +28,8 @@ export class ProvidedServicesContainer extends Component {
         name: user.name,
         rating: user.rating,
         services: user.services,
+        qtEvaluation: user.qtEvaluation,
+        profileImg: user.profileImg,
         minimumPrice
       };
     });
@@ -75,6 +77,9 @@ export class ProvidedServicesContainer extends Component {
                   name={user.name}
                   rating={user.rating}
                   minimumPrice={user.minimumPrice}
+                  qtEvaluation={user.qtEvaluation}
+                  profileImg={user.profileImg}
+                  services={user.services}
                 />
               );
             })}
