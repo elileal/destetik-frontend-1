@@ -30,17 +30,27 @@ class ModalService extends React.Component {
           <ModalBody>
             <Form>
               Serviço:
-              <Input type='select' bsSize='sm'>
-                {this.props.servicesName.map(serviceName => (
-                  <option>{serviceName}</option>
+              <Input
+                type='select'
+                bsSize='sm'
+                name='service'
+                onChange={this.props.handleServiceOnChange}
+              >
+                <option>Selecione um serviço...</option>
+                {this.props.services.map(service => (
+                  <option key={service._id}>{service.name}</option>
                 ))}
               </Input>
               Preço:
-              <Input type='number' />
+              <Input
+                onChange={this.props.handlePriceOnChange}
+                type='number'
+                name='price'
+              />
             </Form>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={this.props.toggle}>Adicionar</Button>
+            <Button onClick={this.props.addService}>Adicionar</Button>
           </ModalFooter>
         </Modal>
       </div>
