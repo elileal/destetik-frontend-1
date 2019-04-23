@@ -5,7 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 const initialState = {};
 const middleware = [thunk];
-const composeEnhancers = composeWithDevTools();
+const composeEnhancers = composeWithDevTools({});
 
 const store = createStore(
   rootReducer,
