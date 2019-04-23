@@ -26,21 +26,26 @@ function ProvidedService(props) {
               height: 64 + 'px'
             }}
             object
-            src= {'https://destetik-backend.herokuapp.com/' + props.profileImg}
+            src={'https://destetik-backend.herokuapp.com/' + props.profileImg}
           />
         </Col>
         <Col sm='5' style={{ ...styleCol, flexDirection: 'column' }}>
           <p style={{ margin: 2 + 'px' }}>{props.name}</p>
-          <p style={{ margin: 2 + 'px' }}>{props.rating} ( {props.qtEvaluation} avaliações ) </p>
+          <p style={{ margin: 2 + 'px' }}>
+            {props.rating} ( {props.qtEvaluation} avaliações ){' '}
+          </p>
         </Col>
         <Col sm='2' style={styleCol}>
-        {props.services.map( (item, key) => 
-          <Media
-            style={styleServices}
-            object
-            src={'https://destetik-backend.herokuapp.com/' + item.serviceId.image }
-          />
-        )}
+          {props.services.map(item => (
+            <Media
+              key={item._id}
+              style={styleServices}
+              object
+              src={
+                'https://destetik-backend.herokuapp.com/' + item.serviceId.image
+              }
+            />
+          ))}
         </Col>
         <Col sm='3' style={styleCol}>
           <p style={{ margin: 2 + 'px' }}>
