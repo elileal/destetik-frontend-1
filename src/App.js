@@ -16,6 +16,7 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import EditProfile from './components/users/EditProfile';
 import ProvidedServicesContainer from './components/providedServices/ProvidedServicesContainer';
+import Profile from './components/users/Profile';
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -33,7 +34,7 @@ if (localStorage.jwtToken) {
 class App extends Component {
   render() {
     const style = {
-      height: 100 + '%',
+      height: 90 + '%',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -45,7 +46,8 @@ class App extends Component {
           <div className='App'>
             <NavBarDestetik />
             <Container style={style}>
-              <Route path='/profile/edit' component={EditProfile} />
+              <Route path='/edit' component={EditProfile} />
+              <Route path='/profile/:id' component={Profile} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Register} />
               <Route
