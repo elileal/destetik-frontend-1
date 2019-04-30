@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Input, Button, Col } from 'reactstrap';
+import { Form, FormGroup, Input, Button, Col, Alert } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import api from '../../services/api';
@@ -11,8 +11,10 @@ export class PersonalData extends Component {
     phone: '',
     street: '',
     district: '',
-    houseNumber: ''
+    houseNumber: '',
+    visible: false
   };
+
   async componentDidMount() {
     const { id } = this.props.auth.user;
     const response = await api.get(`/api/user/${id}`);
@@ -46,78 +48,95 @@ export class PersonalData extends Component {
       }
     };
     const response = await api.patch('/api/user/update', updatedUser);
-    console.log(response);
+    if (response.status === 200) {
+      this.toggleAlert();
+    }
   };
+
+  toggleAlert = () => {
+    this.setState({ visible: !this.state.visible });
+  };
+
   render() {
     const style = {
       textAlign: 'left'
     };
+
     return (
-      <Form style={style} method='POST' onSubmit={this.handleSubmit}>
-        <FormGroup>
-          <h1>Dados Pessoais</h1>
+      <>
+        <Alert
+          color='info'
+          isOpen={this.state.visible}
+          toggle={this.toggleAlert}
+        >
+          Dados Atualizados com Sucesso.
+        </Alert>
+        <Form style={style} method='POST' onSubmit={this.handleSubmit}>
           <FormGroup>
-            Nome:
-            <Input
-              type='text'
-              name='name'
-              onChange={this.handleOnChange}
-              value={this.state.name}
-            />
-          </FormGroup>
-          <FormGroup>
-            Email:
-            <Input
-              type='email'
-              name='email'
-              onChange={this.handleOnChange}
-              value={this.state.email}
-            />
-          </FormGroup>
-          <FormGroup>
-            Telefone:
-            <Input
-              type='text'
-              name='phone'
-              onChange={this.handleOnChange}
-              value={this.state.phone}
-            />
-          </FormGroup>
-        </FormGroup>
-        <FormGroup>
-          <h1>Localização</h1>
-          <FormGroup>
-            Endereço:
-            <Input
-              type='text'
-              name='street'
-              onChange={this.handleOnChange}
-              value={this.state.street}
-            />
-          </FormGroup>
-          <FormGroup row>
-            <Col>
-              Bairro:
+            <h1>Dados Pessoais</h1>
+            <FormGroup>
+              Nome:
               <Input
                 type='text'
-                name='district'
+                name='name'
                 onChange={this.handleOnChange}
-                value={this.state.district}
+                value={this.state.name}
               />
-            </Col>
-            <Col>
-              Número:
+            </FormGroup>
+            <FormGroup>
+              Email:
+              <Input
+                type='email'
+                name='email'
+                onChange={this.handleOnChange}
+                value={this.state.email}
+              />
+            </FormGroup>
+            <FormGroup>
+              Telefone:
               <Input
                 type='text'
-                name='houseNumber'
+                name='phone'
                 onChange={this.handleOnChange}
-                value={this.state.houseNumber}
+                value={this.state.phone}
               />
-            </Col>
+            </FormGroup>
           </FormGroup>
-        </FormGroup>
-        <Button type='submit'>Salvar</Button>
-      </Form>
+          <FormGroup>
+            <h1>Localização</h1>
+            <FormGroup>
+              Endereço:
+              <Input
+                type='text'
+                name='street'
+                onChange={this.handleOnChange}
+                value={this.state.street}
+              />
+            </FormGroup>
+            <FormGroup row>
+              <Col>
+                Bairro:
+                <Input
+                  type='text'
+                  name='district'
+                  onChange={this.handleOnChange}
+                  value={this.state.district}
+                />
+              </Col>
+              <Col>
+                Número:
+                <Input
+                  type='text'
+                  name='houseNumber'
+                  onChange={this.handleOnChange}
+                  value={this.state.houseNumber}
+                />
+              </Col>
+            </FormGroup>
+          </FormGroup>
+          <Button type='submit'>Salvar</Button>
+        </Form>
+      </>
     );
   }
 }

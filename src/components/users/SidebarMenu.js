@@ -31,7 +31,7 @@ function SidebarMenu() {
   ];
 
   const onClickItem = value => {
-    window.location.href = `/profile/edit/${value}`;
+    window.location.href = `/edit/${value}`;
   };
 
   return <SideMenu items={itemsMenu} onMenuItemClick={onClickItem} />;
