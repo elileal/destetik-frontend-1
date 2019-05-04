@@ -16,7 +16,7 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import EditProfile from './components/users/EditProfile';
 import ProvidedServicesContainer from './components/providedServices/ProvidedServicesContainer';
-import Profile from './components/users/Profile';
+import Profile from './components/users/profile/Profile';
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
