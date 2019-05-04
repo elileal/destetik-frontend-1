@@ -71,17 +71,7 @@ export class ProvidedServicesContainer extends Component {
         <Row>
           <Container style={{ paddingTop: 50 + 'px' }}>
             {this.state.filteredUsers.map(user => {
-              return (
-                <ProvidedService
-                  key={user.id}
-                  name={user.name}
-                  rating={user.rating}
-                  minimumPrice={user.minimumPrice}
-                  qtEvaluation={user.qtEvaluation}
-                  profileImg={user.profileImg}
-                  services={user.services}
-                />
-              );
+              return <ProvidedService key={user.id} user={user} />;
             })}
           </Container>
         </Row>

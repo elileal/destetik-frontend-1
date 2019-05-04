@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col, Media } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function ProvidedService(props) {
   const styleCol = {
@@ -19,24 +20,29 @@ function ProvidedService(props) {
     <>
       <Row>
         <Col sm='2' style={styleCol}>
-          <Media
-            style={{
-              borderRadius: 30 + 'px',
-              width: 64 + 'px',
-              height: 64 + 'px'
-            }}
-            object
-            src={'https://destetik-backend.herokuapp.com/' + props.profileImg}
-          />
+          <Link to={`profile/${props.user.id}`}>
+            <Media
+              style={{
+                borderRadius: 30 + 'px',
+                width: 64 + 'px',
+                height: 64 + 'px'
+              }}
+              object
+              src={
+                'https://destetik-backend.herokuapp.com/' +
+                props.user.profileImg
+              }
+            />
+          </Link>
         </Col>
         <Col sm='5' style={{ ...styleCol, flexDirection: 'column' }}>
-          <p style={{ margin: 2 + 'px' }}>{props.name}</p>
+          <p style={{ margin: 2 + 'px' }}>{props.user.name}</p>
           <p style={{ margin: 2 + 'px' }}>
-            {props.rating} ( {props.qtEvaluation} avaliações ){' '}
+            {props.user.rating} ( {props.user.qtEvaluation} avaliações ){' '}
           </p>
         </Col>
         <Col sm='2' style={styleCol}>
-          {props.services.map(item => (
+          {props.user.services.map(item => (
             <Media
               key={item._id}
               style={styleServices}
@@ -49,7 +55,7 @@ function ProvidedService(props) {
         </Col>
         <Col sm='3' style={styleCol}>
           <p style={{ margin: 2 + 'px' }}>
-            A partir de R$ {props.minimumPrice}
+            A partir de R$ {props.user.minimumPrice}
           </p>
         </Col>
       </Row>
