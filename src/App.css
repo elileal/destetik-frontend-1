@@ -2,6 +2,16 @@
   font-family: 'Oswald', sans-serif;
 }
 
+.profile-row {
+  justify-content: center;
+}
+
+.profile-image {
+  border-radius: 30px;
+  width: 96px;
+  height: 96px;
+}
+
 .dropdown-menu-div:hover {
   cursor: pointer;
 }
