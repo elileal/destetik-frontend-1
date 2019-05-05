@@ -41,7 +41,7 @@ class NavBarDestetik extends React.Component {
 
     const authLinks = (
       <DropdownMenu right>
-        <DropdownItem href='/profile/edit'>Profile</DropdownItem>
+        <DropdownItem href='/edit'>Profile</DropdownItem>
         <DropdownItem onClick={this.handleLogout}>Logout</DropdownItem>
       </DropdownMenu>
     );
@@ -53,10 +53,16 @@ class NavBarDestetik extends React.Component {
       </DropdownMenu>
     );
 
+    const logoStyle = {
+      color: '#e692f8',
+      fontSize: `${1.5}rem`
+    };
     return (
       <div>
-        <Navbar color='light' light expand='md'>
-          <NavbarBrand href='/'>Destetik</NavbarBrand>
+        <Navbar light expand='md' className='navbar-destetik'>
+          <NavbarBrand href='/' className='logo' style={logoStyle}>
+            Destetik
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className='ml-auto' navbar>

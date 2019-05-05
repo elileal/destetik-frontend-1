@@ -1,7 +1,17 @@
+/* ----General---- */
 * {
   font-family: 'Oswald', sans-serif;
 }
 
+.logo {
+  font-family: 'Mr Dafoe', sans-serif;
+}
+
+.navbar-destetik {
+  border: #fff 1px solid;
+}
+
+/* ----Profile View---- */
 .profile-row {
   justify-content: center;
 }
@@ -10,6 +20,19 @@
   border-radius: 30px;
   width: 96px;
   height: 96px;
+}
+
+/* ----Profile Edit---- */
+
+/* --Add Service-- */
+
+.delete-icon {
+  color: #cc2c2c;
+}
+
+.delete-icon:hover {
+  cursor: pointer;
+  color: #b12626;
 }
 
 .dropdown-menu-div:hover {
