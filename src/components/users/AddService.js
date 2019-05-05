@@ -119,7 +119,6 @@ export class AddService extends Component {
       'data-key'
     );
     const response = await api.delete(`/api/provided/delete/${serviceId}`);
-    console.log(response);
     const providedServices = this.state.providedServices.filter(
       providedService => providedService.id !== serviceId
     );
@@ -166,12 +165,16 @@ export class AddService extends Component {
                   <td>{providedService.name}</td>
                   <td>{providedService.price}</td>
                   <td>
-                    <a href='edit' onClick={this.toggleUpdate}>
-                      <i className='fas fa-edit' />
-                    </a>{' '}
-                    <a href='#' onClick={this.deleteService}>
-                      <i className='fas fa-trash' />
-                    </a>
+                    <p>
+                      <a href='edit' onClick={this.toggleUpdate}>
+                        <i className='fas fa-edit' />
+                      </a>
+                      {'  '}
+                      <i
+                        className='fas fa-trash delete-icon'
+                        onClick={this.deleteService}
+                      />
+                    </p>
                   </td>
                 </tr>
               ))}
