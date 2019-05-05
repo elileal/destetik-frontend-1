@@ -1,11 +1,20 @@
 import React from 'react';
-import { Media } from 'reactstrap';
+import { Media, Col } from 'reactstrap';
 
 function DisplayProvidedService(props) {
   return (
     <>
-      <Media object src={props.src} />
-      {props.name}
+      <Col md={2}>
+        <Media
+          style={{
+            width: `${64}px`,
+            height: `${64}px`
+          }}
+          object
+          src={props.src}
+        />
+        <h6>{props.name}</h6>
+      </Col>
     </>
   );
 }

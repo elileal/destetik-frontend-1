@@ -15,7 +15,6 @@ export class Profile extends Component {
   async componentDidMount() {
     const userId = this.props.match.params.id;
     const response = await api.get(`/api/user/${userId}`);
-    console.log(response.data);
     this.setState({ user: response.data });
   }
 
@@ -24,9 +23,11 @@ export class Profile extends Component {
     if (this.state.user.services) {
       servicesContent = this.state.user.services.map(service => (
         <DisplayProvidedService
-          key={service.id}
-          name={service.name}
-          src={`https://destetik-backend.herokuapp.com/${service.image}`}
+          key={service._id}
+          name={service.serviceId.name}
+          src={`https://destetik-backend.herokuapp.com/${
+            service.serviceId.image
+          }`}
         />
       ));
     }
