@@ -15,13 +15,13 @@ export class Login extends Component {
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/profile/edit');
+      this.props.history.push('/edit');
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/profile/edit');
+      this.props.history.push('/edit');
     }
 
     if (nextProps.errors) {
