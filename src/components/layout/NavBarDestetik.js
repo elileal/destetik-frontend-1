@@ -54,9 +54,10 @@ class NavBarDestetik extends React.Component {
     );
 
     const logoStyle = {
-      color: '#e692f8',
+      color: '#fff',
       fontSize: `${1.5}rem`
     };
+
     return (
       <div>
         <Navbar light expand='md' className='navbar-destetik'>
