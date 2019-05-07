@@ -33,19 +33,12 @@ if (localStorage.jwtToken) {
 
 class App extends Component {
   render() {
-    const style = {
-      height: 90 + '%',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center'
-    };
     return (
       <Provider store={store}>
         <Router>
           <div className='App'>
             <NavBarDestetik />
-            <Container style={style}>
+            <Container fluid className='main-container'>
               <Route path='/edit' component={EditProfile} />
               <Route path='/profile/:id' component={Profile} />
               <Route exact path='/login' component={Login} />
