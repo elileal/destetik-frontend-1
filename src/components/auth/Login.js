@@ -42,28 +42,26 @@ export class Login extends Component {
 
   render() {
     return (
-      <>
-        <Form method='POST' onSubmit={this.handleSubmit}>
-          <InputField
-            type='email'
-            name='email'
-            placeholder='Email'
-            onChange={this.handleOnChange}
-            value={this.state.email}
-          />
-          <InputField
-            type='password'
-            name='password'
-            placeholder='Senha'
-            onChange={this.handleOnChange}
-            value={this.state.password}
-          />
-          <Button type='submit'>Login</Button>
-          <p style={{ marginTop: 16 + 'px' }}>
-            Ainda não registrado? <a href='/signup'>Registre-se aqui.</a>
-          </p>
-        </Form>
-      </>
+      <Form method='POST' onSubmit={this.handleSubmit}>
+        <InputField
+          type='email'
+          name='email'
+          placeholder='Email'
+          onChange={this.handleOnChange}
+          value={this.state.email}
+        />
+        <InputField
+          type='password'
+          name='password'
+          placeholder='Senha'
+          onChange={this.handleOnChange}
+          value={this.state.password}
+        />
+        <Button type='submit'>Login</Button>
+        <p style={{ marginTop: 16 + 'px' }}>
+          Ainda não registrado? <a href='/signup'>Registre-se aqui.</a>
+        </p>
+      </Form>
     );
   }
 }
