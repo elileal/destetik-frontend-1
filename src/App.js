@@ -7,7 +7,7 @@ import { setCurrentUser, logoutUser } from './actions/authActions';
 import { Provider } from 'react-redux';
 import store from './store';
 
-import './App.css';
+import './assets/css/App.css';
 import 'react-sidemenu/dist/side-menu.css';
 
 import { Container } from 'reactstrap';
