@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* ----General---- */
+* {
+  font-family: 'Oswald', sans-serif;
+}
+
+.logo {
+  font-family: 'Mr Dafoe', sans-serif;
+}
+
+.navbar-destetik {
+  padding: 0px 20px !important;
+  border: 1px solid rgba(115, 84, 98, 0.3);
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 89%;
+}
+
+/* ----Profile View---- */
+.profile-row {
+  justify-content: center;
+}
+
+.profile-image {
+  border-radius: 30px;
+  width: 96px;
+  height: 96px;
+}
+
+/* ----Profile Edit---- */
+
+/* --Add Service-- */
+
+.delete-icon {
+  color: #cc2c2c;
+}
+
+.delete-icon:hover {
+  cursor: pointer;
+  color: #b12626;
+}
+
+/* ----Register Form Background---- */
+
+.register-form {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px 50px;
+  border-radius: 5px;
+}

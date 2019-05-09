@@ -41,27 +41,37 @@ export class Login extends Component {
   };
 
   render() {
+    const headerStyle = {
+      color: '#495057',
+      fontSize: '70px',
+      marginBottom: '35px'
+    };
     return (
-      <Form method='POST' onSubmit={this.handleSubmit}>
-        <InputField
-          type='email'
-          name='email'
-          placeholder='Email'
-          onChange={this.handleOnChange}
-          value={this.state.email}
-        />
-        <InputField
-          type='password'
-          name='password'
-          placeholder='Senha'
-          onChange={this.handleOnChange}
-          value={this.state.password}
-        />
-        <Button type='submit'>Login</Button>
-        <p style={{ marginTop: 16 + 'px' }}>
-          Ainda não registrado? <a href='/signup'>Registre-se aqui.</a>
-        </p>
-      </Form>
+      <>
+        <h1 className='logo' style={headerStyle}>
+          Destetik
+        </h1>
+        <Form method='POST' onSubmit={this.handleSubmit}>
+          <InputField
+            type='email'
+            name='email'
+            placeholder='Email'
+            onChange={this.handleOnChange}
+            value={this.state.email}
+          />
+          <InputField
+            type='password'
+            name='password'
+            placeholder='Senha'
+            onChange={this.handleOnChange}
+            value={this.state.password}
+          />
+          <Button type='submit'>Login</Button>
+          <p style={{ marginTop: 16 + 'px' }}>
+            Ainda não registrado? <a href='/signup'>Registre-se aqui.</a>
+          </p>
+        </Form>
+      </>
     );
   }
 }
