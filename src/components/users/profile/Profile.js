@@ -32,19 +32,19 @@ export class Profile extends Component {
       ));
     }
     return (
-      <Container>
+      <Container className='profile-container' style={{ width: '60%' }}>
         <Row className='profile-row mt-1 mb-1' style={{ height: 0 + 'px' }}>
           <Media
             style={{
               position: 'relative',
-              bottom: 50 + 'px'
+              bottom: 70 + 'px'
             }}
             className='profile-image'
             object
             src={`https://destetik-backend.herokuapp.com/uploads/notFound.jpg`}
           />
         </Row>
-        <Row className='mt-1 mb-4' style={{ justifyContent: 'flex-end' }}>
+        <Row className='mt-1 mb-1' style={{ justifyContent: 'flex-end' }}>
           <Col sm={3}>
             <DisplayInfo
               colorButton='info'
