@@ -66,3 +66,14 @@ code {
   padding: 20px 50px;
   border-radius: 5px;
 }
+
+/* ----Provided Services View---- */
+
+.search-service {
+  width: 85%;
+}
+
+.container-service {
+  padding-top: 50px;
+  min-height: 400px;
+}
