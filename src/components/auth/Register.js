@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'reactstrap';
+import { Form, Button, FormGroup } from 'reactstrap';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
 import PropTypes from 'prop-types';
@@ -40,8 +40,16 @@ export class Register extends Component {
 
   render() {
     return (
-      <>
-        <Form method='POST' onSubmit={this.handleSubmit}>
+      <div style={{ width: '400px', marginTop: '3%' }}>
+        <Form
+          className='register-form'
+          method='POST'
+          onSubmit={this.handleSubmit}
+        >
+          <FormGroup>
+            <h3>Crie sua Conta</h3>
+            <h6>É rápido, prático e totalmente grátis.</h6>
+          </FormGroup>
           <InputField
             type='text'
             name='name'
@@ -75,7 +83,7 @@ export class Register extends Component {
             Já registrado? <a href='/login'>Faça o login aqui.</a>
           </p>
         </Form>
-      </>
+      </div>
     );
   }
 }

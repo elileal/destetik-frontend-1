@@ -18,19 +18,17 @@ export class EditProfile extends Component {
 
   render() {
     const style = {
-      display: 'flex',
-      height: 90 + '%'
+      padding: 0,
+      width: '70%'
     };
 
     return (
-      <Container style={style}>
-        <Col>
-          <SidebarMenu />
-        </Col>
-        <Col>
+      <Container className='profile-edit-container' style={style}>
+        <SidebarMenu />
+        <Col className='profile-edit-item-container'>
           <Route
             exact
-            path={`${this.props.match.path}/`}
+            path={`${this.props.match.path}/dados-pessoais`}
             component={PersonalData}
           />
           <Route

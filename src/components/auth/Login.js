@@ -15,13 +15,13 @@ export class Login extends Component {
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/edit');
+      this.props.history.push('/edit/dados-pessoais');
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/edit');
+      this.props.history.push('/edit/dados-pessoais');
     }
 
     if (nextProps.errors) {
@@ -41,8 +41,16 @@ export class Login extends Component {
   };
 
   render() {
+    const headerStyle = {
+      color: '#495057',
+      fontSize: '70px',
+      marginBottom: '35px'
+    };
     return (
-      <>
+      <div style={{ marginTop: '7%' }}>
+        <h1 className='logo' style={headerStyle}>
+          Destetik
+        </h1>
         <Form method='POST' onSubmit={this.handleSubmit}>
           <InputField
             type='email'
@@ -63,7 +71,7 @@ export class Login extends Component {
             Ainda não registrado? <a href='/signup'>Registre-se aqui.</a>
           </p>
         </Form>
-      </>
+      </div>
     );
   }
 }

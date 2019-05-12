@@ -1,38 +1,13 @@
-/* ----General---- */
-* {
-  font-family: 'Oswald', sans-serif;
+.App {
+  text-align: center;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.288);
 }
 
-.logo {
-  font-family: 'Mr Dafoe', sans-serif;
-}
-
-.navbar-destetik {
-  border: #fff 1px solid;
-}
-
-/* ----Profile View---- */
-.profile-row {
-  justify-content: center;
-}
-
-.profile-image {
-  border-radius: 30px;
-  width: 96px;
-  height: 96px;
-}
-
-/* ----Profile Edit---- */
-
-/* --Add Service-- */
-
-.delete-icon {
-  color: #cc2c2c;
-}
-
-.delete-icon:hover {
-  cursor: pointer;
-  color: #b12626;
+#root {
+  background-image: url('../images/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .dropdown-menu-div:hover {
@@ -41,11 +16,6 @@
 
 .Side-menu-default {
   height: 100%;
-}
-
-.App {
-  text-align: center;
-  height: 100vh;
 }
 
 .App-logo {
