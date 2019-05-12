@@ -40,7 +40,7 @@ export class Register extends Component {
 
   render() {
     return (
-      <>
+      <div style={{ width: '400px', marginTop: '3%' }}>
         <Form
           className='register-form'
           method='POST'
@@ -83,7 +83,7 @@ export class Register extends Component {
             Já registrado? <a href='/login'>Faça o login aqui.</a>
           </p>
         </Form>
-      </>
+      </div>
     );
   }
 }
