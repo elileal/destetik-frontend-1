@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Input, Button, Col, Alert } from 'reactstrap';
+import { Form, FormGroup, Input, Button, Col, Alert, Row } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import api from '../../services/api';
@@ -63,7 +63,7 @@ export class PersonalData extends Component {
     };
 
     return (
-      <>
+      <div className='personal-data-container'>
         <Alert
           color='info'
           isOpen={this.state.visible}
@@ -73,7 +73,7 @@ export class PersonalData extends Component {
         </Alert>
         <Form style={style} method='POST' onSubmit={this.handleSubmit}>
           <FormGroup>
-            <h1>Dados Pessoais</h1>
+            <h4>Dados Pessoais</h4>
             <FormGroup>
               Nome:
               <Input
@@ -103,7 +103,7 @@ export class PersonalData extends Component {
             </FormGroup>
           </FormGroup>
           <FormGroup>
-            <h1>Localização</h1>
+            <h4>Localização</h4>
             <FormGroup>
               Endereço:
               <Input
@@ -134,9 +134,11 @@ export class PersonalData extends Component {
               </Col>
             </FormGroup>
           </FormGroup>
-          <Button type='submit'>Salvar</Button>
+          <Row style={{ justifyContent: 'center' }}>
+            <Button type='submit'>Salvar</Button>
+          </Row>
         </Form>
-      </>
+      </div>
     );
   }
 }
