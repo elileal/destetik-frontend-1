@@ -41,6 +41,7 @@ code {
 }
 
 .profile-container {
+  margin-top: 50px;
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
@@ -56,8 +57,15 @@ code {
 .profile-edit-container {
   display: flex;
   background: #ffffff;
-  border-radius: 5px;
+  border-radius: 10px;
   min-height: 522px;
+}
+
+.profile-edit-image {
+  width: 200px;
+  height: 200px;
+  border-bottom: 1px solid #f0b8e0;
+  border-top-left-radius: 10px;
 }
 
 .profile-edit-item-container {
@@ -67,8 +75,13 @@ code {
 /* --SideMenu-- */
 
 .Side-menu-destetik {
-  border-right: 1px solid #f0b8e0;
   width: 200px !important;
+}
+
+.side-menu-container {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #f0b8e0;
 }
 
 .item {

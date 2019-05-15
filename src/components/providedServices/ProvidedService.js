@@ -28,10 +28,7 @@ function ProvidedService(props) {
                 height: 64 + 'px'
               }}
               object
-              src={
-                'https://destetik-backend.herokuapp.com/' +
-                props.user.profileImg
-              }
+              src={props.user.profileImg}
             />
           </Link>
         </Col>
