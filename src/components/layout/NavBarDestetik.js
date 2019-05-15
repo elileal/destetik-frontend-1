@@ -44,7 +44,7 @@ class NavBarDestetik extends React.Component {
         right
         style={{ background: 'rgba(255, 255, 255, 0.0)', borderTop: '0px' }}
       >
-        <DropdownItem href='/edit'>Profile</DropdownItem>
+        <DropdownItem href='/edit/dados-pessoais'>Profile</DropdownItem>
         <DropdownItem onClick={this.handleLogout}>Logout</DropdownItem>
       </DropdownMenu>
     );
