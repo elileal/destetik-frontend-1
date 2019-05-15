@@ -40,23 +40,30 @@ class NavBarDestetik extends React.Component {
     const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
-      <DropdownMenu right>
-        <DropdownItem href='/edit'>Profile</DropdownItem>
+      <DropdownMenu
+        right
+        style={{ background: 'rgba(255, 255, 255, 0.0)', borderTop: '0px' }}
+      >
+        <DropdownItem href='/edit/dados-pessoais'>Profile</DropdownItem>
         <DropdownItem onClick={this.handleLogout}>Logout</DropdownItem>
       </DropdownMenu>
     );
 
     const guestLinks = (
-      <DropdownMenu right>
+      <DropdownMenu
+        right
+        style={{ background: 'rgba(255, 255, 255, 0.0)', borderTop: '0px' }}
+      >
         <DropdownItem href='/login'>Login</DropdownItem>
         <DropdownItem href='/signup'>Registro</DropdownItem>
       </DropdownMenu>
     );
 
     const logoStyle = {
-      color: '#e692f8',
+      color: 'rgba(0, 0, 0, 0.8)',
       fontSize: `${1.5}rem`
     };
+
     return (
       <div>
         <Navbar light expand='md' className='navbar-destetik'>

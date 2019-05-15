@@ -1,22 +1,10 @@
 import React from 'react';
-import { Button, Container } from 'reactstrap';
+import { Button } from 'reactstrap';
 import api from '../../services/api';
 import { logoutUser } from '../../actions/authActions';
 import { connect } from 'react-redux';
 
 function DeleteAccount(props) {
-  const styleTitle = {
-    textAlign: 'left'
-  };
-
-  const styleContainer = {
-    height: 50 + '%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center'
-  };
-
   const onDelete = async e => {
     e.preventDefault();
     await api.delete('/api/user/delete');
@@ -25,11 +13,11 @@ function DeleteAccount(props) {
   };
   return (
     <>
-      <h1 style={styleTitle}>Excluir Conta</h1>
-      <Container style={styleContainer}>
-        Você deseja excluir sua conta?
+      <h4 style={{ textAlign: 'left' }}>Excluir Conta</h4>
+      <div className='delete-account-confirm'>
+        <p>Você deseja excluir sua conta?</p>
         <Button onClick={onDelete}>Excluir</Button>
-      </Container>
+      </div>
     </>
   );
 }

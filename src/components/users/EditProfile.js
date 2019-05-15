@@ -3,34 +3,45 @@ import { Container, Col } from 'reactstrap';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import api from '../../services/api';
 
 import SidebarMenu from './SidebarMenu';
 import PersonalData from './PersonalData';
 import AddService from './AddService';
 import DeleteAccount from './DeleteAccount';
+import EditPicture from './EditPicture';
 
 export class EditProfile extends Component {
-  componentDidMount() {
+  state = {
+    user: {}
+  };
+
+  async componentDidMount() {
     if (!this.props.auth.isAuthenticated) {
       this.props.history.push('/login');
     }
+    const response = await api.get('/api/user/current');
+    this.setState({ user: response.data });
   }
 
   render() {
     const style = {
-      display: 'flex',
-      height: 90 + '%'
+      padding: 0,
+      width: '70%'
     };
-
+    const { user } = this.state;
     return (
-      <Container style={style}>
-        <Col>
-          <SidebarMenu />
-        </Col>
-        <Col>
+      <Container className='profile-edit-container' style={style}>
+        <SidebarMenu profileImg={user.profileImg} />
+        <Col className='profile-edit-item-container'>
           <Route
             exact
-            path={`${this.props.match.path}/`}
+            path={`${this.props.match.path}/editar-foto`}
+            component={EditPicture}
+          />
+          <Route
+            exact
+            path={`${this.props.match.path}/dados-pessoais`}
             component={PersonalData}
           />
           <Route

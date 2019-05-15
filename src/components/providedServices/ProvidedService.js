@@ -28,16 +28,15 @@ function ProvidedService(props) {
                 height: 64 + 'px'
               }}
               object
-              src={
-                'https://destetik-backend.herokuapp.com/' +
-                props.user.profileImg
-              }
+              src={props.user.profileImg}
             />
           </Link>
         </Col>
         <Col sm='5' style={{ ...styleCol, flexDirection: 'column' }}>
-          <p style={{ margin: 2 + 'px' }}>{props.user.name}</p>
-          <p style={{ margin: 2 + 'px' }}>
+          <Link className='username-link' to={`profile/${props.user.id}`}>
+            <p className='user-text'>{props.user.name}</p>
+          </Link>
+          <p className='user-text'>
             {props.user.rating} ( {props.user.qtEvaluation} avaliações ){' '}
           </p>
         </Col>

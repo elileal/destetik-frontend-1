@@ -14,14 +14,15 @@ export class Profile extends Component {
 
   async componentDidMount() {
     const userId = this.props.match.params.id;
-    const response = await api.get(`/api/user/${userId}`);
+    const response = await api.get(`/api/user/show/${userId}`);
     this.setState({ user: response.data });
   }
 
   render() {
+    const { user } = this.state;
     let servicesContent = '';
-    if (this.state.user.services) {
-      servicesContent = this.state.user.services.map(service => (
+    if (user.services) {
+      servicesContent = user.services.map(service => (
         <DisplayProvidedService
           key={service._id}
           name={service.serviceId.name}
@@ -32,44 +33,36 @@ export class Profile extends Component {
       ));
     }
     return (
-      <Container>
+      <Container className='profile-container' style={{ width: '60%' }}>
         <Row className='profile-row mt-1 mb-1' style={{ height: 0 + 'px' }}>
           <Media
             style={{
               position: 'relative',
-              bottom: 50 + 'px'
+              bottom: 70 + 'px'
             }}
             className='profile-image'
             object
-            src={`https://destetik-backend.herokuapp.com/uploads/notFound.jpg`}
+            src={user.profileImg}
           />
         </Row>
-        <Row className='mt-1 mb-4' style={{ justifyContent: 'flex-end' }}>
+        <Row className='mt-1 mb-1' style={{ justifyContent: 'flex-end' }}>
           <Col sm={3}>
-            <DisplayInfo
-              colorButton='info'
-              info='Email'
-              body={this.state.user.email}
-            />{' '}
+            <DisplayInfo colorButton='info' info='Email' body={user.email} />{' '}
             <DisplayInfo
               colorButton='primary'
               info='Telefone'
-              body={
-                this.state.user.phone
-                  ? this.state.user.phone
-                  : 'Telefone não adicionado'
-              }
+              body={user.phone ? user.phone : 'Telefone não adicionado'}
             />
           </Col>
         </Row>
-        <h2>{this.state.user.name}</h2>
+        <h2>{user.name}</h2>
         <StarRatings
           starDimension='20px'
-          rating={this.state.user.rating}
+          rating={user.rating}
           starRatedColor='grey'
           numberOfStars={5}
         />
-        <h6>{this.state.user.qtEvaluation} Avaliações</h6>
+        <h6>{user.qtEvaluation} Avaliações</h6>
         <Row className='profile-row mt-4 mb-4'>{servicesContent}</Row>
         <Row className='profile-row mt-2 mb-2'>Mapa</Row>
         <Row className='profile-row mt-2 mb-2'>

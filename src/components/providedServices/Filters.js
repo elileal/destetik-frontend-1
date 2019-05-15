@@ -22,9 +22,19 @@ class Filters extends React.Component {
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle caret>Filtros</DropdownToggle>
         <DropdownMenu>
-          <DropdownItem>Manicure</DropdownItem>
-          <DropdownItem>Pedicure</DropdownItem>
-          <DropdownItem>Hidratação</DropdownItem>
+          <DropdownItem onClick={this.props.resetFilter}>Todos</DropdownItem>
+          <DropdownItem id='manicure' onClick={this.props.handleFilterOnChange}>
+            Manicure
+          </DropdownItem>
+          <DropdownItem id='pedicure' onClick={this.props.handleFilterOnChange}>
+            Pedicure
+          </DropdownItem>
+          <DropdownItem
+            id='hidratacao'
+            onClick={this.props.handleFilterOnChange}
+          >
+            Hidratação
+          </DropdownItem>
         </DropdownMenu>
       </Dropdown>
     );

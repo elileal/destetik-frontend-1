@@ -126,14 +126,11 @@ export class AddService extends Component {
   };
 
   render() {
-    const styleTitle = {
-      textAlign: 'left'
-    };
-
     const styleContainer = {
       height: 70 + '%',
       display: 'flex',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      padding: '10px'
     };
 
     const styleButton = {
@@ -143,13 +140,12 @@ export class AddService extends Component {
 
     const styleFloat = {
       display: 'flex',
-      justifyContent: 'flex-end'
+      justifyContent: 'flex-end',
+      paddingRight: '30px'
     };
     return (
       <>
-        <Row style={styleTitle}>
-          <h1>Serviços Disponíveis</h1>
-        </Row>
+        <h4 style={{ textAlign: 'left' }}>Serviços Disponíveis</h4>
         <Row style={styleContainer}>
           <Table responsive>
             <thead>
@@ -166,12 +162,13 @@ export class AddService extends Component {
                   <td>{providedService.price}</td>
                   <td>
                     <p>
-                      <a href='edit' onClick={this.toggleUpdate}>
-                        <i className='fas fa-edit' />
-                      </a>
+                      <i
+                        className='fas fa-edit edit-icon custom-icon'
+                        onClick={this.toggleUpdate}
+                      />
                       {'  '}
                       <i
-                        className='fas fa-trash delete-icon'
+                        className='fas fa-trash delete-icon custom-icon'
                         onClick={this.deleteService}
                       />
                     </p>

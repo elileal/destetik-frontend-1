@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Input, InputGroup, Button } from 'reactstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Input,
+  InputGroup,
+  Button,
+  Spinner
+} from 'reactstrap';
 import api from '../../services/api';
 
 import Filters from './Filters';
@@ -7,6 +15,7 @@ import ProvidedService from './ProvidedService';
 
 export class ProvidedServicesContainer extends Component {
   state = {
+    loading: true,
     search: '',
     users: [],
     filteredUsers: []
@@ -14,7 +23,7 @@ export class ProvidedServicesContainer extends Component {
 
   async componentDidMount() {
     this.setState({ filteredUsers: this.state.users });
-    const response = await api.get('/api/user');
+    const response = await api.get('/api/user/all');
     let usersWithServices = response.data.filter(
       user => user.services.length > 0
     );
@@ -33,8 +42,11 @@ export class ProvidedServicesContainer extends Component {
         minimumPrice
       };
     });
-    this.setState({ users: usersWithServices });
-    this.setState({ filteredUsers: usersWithServices });
+    this.setState({
+      users: usersWithServices,
+      filteredUsers: usersWithServices,
+      loading: false
+    });
   }
 
   handleOnChange = e => {
@@ -46,10 +58,35 @@ export class ProvidedServicesContainer extends Component {
     });
   };
 
+  handleFilterOnChange = e => {
+    const serviceFilter = e.target.id;
+    this.setState({
+      filteredUsers: this.state.users.filter(user => {
+        let servicesFiltered = user.services.filter(service => {
+          if (
+            service.serviceId.name.toLowerCase() === serviceFilter.toLowerCase()
+          )
+            return true;
+          return false;
+        });
+        return servicesFiltered.length > 0;
+      })
+    });
+  };
+
+  resetFilter = () => {
+    this.setState({ filteredUsers: this.state.users });
+  };
+
   render() {
+    const loadingSpinner = <Spinner color='light' />;
+    const providedServicesContent = this.state.filteredUsers.map(user => {
+      return <ProvidedService key={user.id} user={user} />;
+    });
+
     return (
-      <Container>
-        <Row>
+      <>
+        <Row className='search-service'>
           <Col sm='9'>
             <InputGroup>
               <Input
@@ -65,17 +102,16 @@ export class ProvidedServicesContainer extends Component {
             </InputGroup>
           </Col>
           <Col sm='3'>
-            <Filters />
+            <Filters
+              handleFilterOnChange={this.handleFilterOnChange}
+              resetFilter={this.resetFilter}
+            />
           </Col>
         </Row>
-        <Row>
-          <Container style={{ paddingTop: 50 + 'px' }}>
-            {this.state.filteredUsers.map(user => {
-              return <ProvidedService key={user.id} user={user} />;
-            })}
-          </Container>
-        </Row>
-      </Container>
+        <Container className='container-service'>
+          {this.state.loading ? loadingSpinner : providedServicesContent}
+        </Container>
+      </>
     );
   }
 }
