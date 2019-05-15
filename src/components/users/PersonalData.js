@@ -16,8 +16,7 @@ export class PersonalData extends Component {
   };
 
   async componentDidMount() {
-    const { id } = this.props.auth.user;
-    const response = await api.get(`/api/user/${id}`);
+    const response = await api.get('/api/user/current');
     const { name, email } = response.data;
     let street, district, houseNumber;
     street = district = houseNumber = '';
