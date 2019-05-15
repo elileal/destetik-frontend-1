@@ -23,7 +23,7 @@ export class ProvidedServicesContainer extends Component {
 
   async componentDidMount() {
     this.setState({ filteredUsers: this.state.users });
-    const response = await api.get('/api/user');
+    const response = await api.get('/api/user/all');
     let usersWithServices = response.data.filter(
       user => user.services.length > 0
     );
