@@ -45,7 +45,6 @@ code {
 }
 
 .profile-container {
-  margin-top: 50px;
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
@@ -148,7 +147,14 @@ code {
 /* ----Provided Services View---- */
 
 .search-service {
-  width: 85%;
+  width: 90%;
+}
+
+.provided-services-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-items: center
 }
 
 .username-link {

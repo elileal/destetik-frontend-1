@@ -85,7 +85,7 @@ export class ProvidedServicesContainer extends Component {
     });
 
     return (
-      <>
+      <div className='provided-services-container'>
         <Row className='search-service'>
           <Col sm='9'>
             <InputGroup>
@@ -111,7 +111,7 @@ export class ProvidedServicesContainer extends Component {
         <Container className='container-service'>
           {this.state.loading ? loadingSpinner : providedServicesContent}
         </Container>
-      </>
+      </div>
     );
   }
 }

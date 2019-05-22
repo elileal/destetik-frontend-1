@@ -33,7 +33,7 @@ export class Profile extends Component {
       ));
     }
     return (
-      <Container className='profile-container' style={{ width: '60%' }}>
+      <Container className='profile-container centered-container' style={{ width: '60%' }}>
         <Row className='profile-row mt-1 mb-1' style={{ height: 0 + 'px' }}>
           <Media
             style={{
@@ -46,7 +46,7 @@ export class Profile extends Component {
           />
         </Row>
         <Row className='mt-1 mb-1' style={{ justifyContent: 'flex-end' }}>
-          <Col sm={3}>
+          <Col sm={4}>
             <DisplayInfo colorButton='info' info='Email' body={user.email} />{' '}
             <DisplayInfo
               colorButton='primary'
