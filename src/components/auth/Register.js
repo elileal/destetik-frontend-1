@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Form, Button, FormGroup } from 'reactstrap';
+import { Form, Button, FormGroup, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-
-import InputField from '../layout/InputField';
 
 export class Register extends Component {
   state = {
@@ -39,6 +37,7 @@ export class Register extends Component {
   };
 
   render() {
+    const { name, email, password, password2 } = this.state;
     return (
       <div className='centered-container' style={{ width: '400px', marginTop: '3%' }}>
         <Form
@@ -50,34 +49,42 @@ export class Register extends Component {
             <h3>Crie sua Conta</h3>
             <h6>É rápido, prático e totalmente grátis.</h6>
           </FormGroup>
-          <InputField
-            type='text'
-            name='name'
-            placeholder='Nome'
-            onChange={this.handleOnChange}
-            value={this.state.name}
-          />
-          <InputField
-            type='email'
-            name='email'
-            placeholder='Email'
-            onChange={this.handleOnChange}
-            value={this.state.email}
-          />
-          <InputField
-            type='password'
-            name='password'
-            placeholder='Senha'
-            onChange={this.handleOnChange}
-            value={this.state.password}
-          />
-          <InputField
-            type='password'
-            name='password2'
-            placeholder='Confirmação de Senha'
-            onChange={this.handleOnChange}
-            value={this.state.password2}
-          />
+          <FormGroup row>
+            <Input
+              type='text'
+              name='name'
+              placeholder='Nome'
+              value={name}
+              onChange={this.handleOnChange}
+            />
+          </FormGroup>
+          <FormGroup row>
+            <Input
+              type='email'
+              name='email'
+              placeholder='E-mail'
+              value={email}
+              onChange={this.handleOnChange}
+            />
+          </FormGroup>
+          <FormGroup row>
+            <Input
+              type='password'
+              name='password'
+              placeholder='Senha'
+              value={password}
+              onChange={this.handleOnChange}
+            />
+          </FormGroup>
+          <FormGroup row>
+            <Input
+              type='password'
+              name='password2'
+              placeholder='Confirme sua Senha'
+              value={password2}
+              onChange={this.handleOnChange}
+            />
+          </FormGroup>
           <Button type='submit'>Registre-se</Button>
           <p style={{ marginTop: 16 + 'px' }}>
             Já registrado? <a href='/login'>Faça o login aqui.</a>
