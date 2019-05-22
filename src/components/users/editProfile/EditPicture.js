@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Input, Spinner } from 'reactstrap';
-import api from '../../services/api';
+import api from '../../../services/api';
 import { connect } from 'react-redux';
 
 class EditPicture extends React.Component {

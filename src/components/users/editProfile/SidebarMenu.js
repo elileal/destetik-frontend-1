@@ -2,7 +2,6 @@ import React from 'react';
 import SideMenu from 'react-sidemenu';
 import { Redirect } from 'react-router-dom';
 import { Media } from 'reactstrap';
-import api from '../../services/api';
 
 class SidebarMenu extends React.Component {
   state = {

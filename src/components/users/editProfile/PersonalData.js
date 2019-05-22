@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, FormGroup, Input, Button, Col, Alert, Row } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import api from '../../services/api';
+import api from '../../../services/api';
 
 export class PersonalData extends Component {
   state = {

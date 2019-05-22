@@ -3,7 +3,7 @@ import { Container, Col } from 'reactstrap';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import api from '../../services/api';
+import api from '../../../services/api';
 
 import SidebarMenu from './SidebarMenu';
 import PersonalData from './PersonalData';

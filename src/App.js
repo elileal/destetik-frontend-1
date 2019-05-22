@@ -14,7 +14,7 @@ import { Container } from 'reactstrap';
 import NavBarDestetik from './components/layout/NavBarDestetik';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import EditProfile from './components/users/EditProfile';
+import EditProfile from './components/users/editProfile/EditProfile';
 import ProvidedServicesContainer from './components/providedServices/ProvidedServicesContainer';
 import Profile from './components/users/profile/Profile';
 

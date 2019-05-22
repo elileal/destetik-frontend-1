@@ -4,7 +4,7 @@ import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import api from '../../services/api';
+import api from '../../../services/api';
 
 import ModalServiceUpdate from './ModalServiceUpdate';
 import ModalService from './ModalService';

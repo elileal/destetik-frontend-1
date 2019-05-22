@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-import api from '../../services/api';
-import { logoutUser } from '../../actions/authActions';
+import api from '../../../services/api';
+import { logoutUser } from '../../../actions/authActions';
 import { connect } from 'react-redux';
 
 function DeleteAccount(props) {
