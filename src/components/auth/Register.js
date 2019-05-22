@@ -40,7 +40,7 @@ export class Register extends Component {
 
   render() {
     return (
-      <div style={{ width: '400px', marginTop: '3%' }}>
+      <div className='centered-container' style={{ width: '400px', marginTop: '3%' }}>
         <Form
           className='register-form'
           method='POST'

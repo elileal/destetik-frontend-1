@@ -47,7 +47,7 @@ export class Login extends Component {
       marginBottom: '35px'
     };
     return (
-      <div style={{ marginTop: '7%' }}>
+      <div className='centered-container'>
         <h1 className='logo' style={headerStyle}>
           Destetik
         </h1>
