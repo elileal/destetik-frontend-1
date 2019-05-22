@@ -34,12 +34,13 @@ class EditPicture extends React.Component {
   render() {
     const formPicture = (
       <Form
-        style={{ display: 'center', justifyContent: 'center' }}
+        style={{ justifyContent: 'center' }}
         onSubmit={this.handleSubmit}
       >
         <FormGroup>
           <h5>Escolhe uma foto para perfil:</h5>
           <Input
+            style={{border: '1px solid #f0b8e0', padding: '2px', borderRadius: '5px'}}
             onChange={this.handleOnChange}
             type='file'
             name='file'

@@ -31,7 +31,7 @@ export class EditProfile extends Component {
     };
     const { user } = this.state;
     return (
-      <Container className='profile-edit-container' style={style}>
+      <Container className='profile-edit-container centered-container' style={style}>
         <SidebarMenu profileImg={user.profileImg} />
         <Col className='profile-edit-item-container'>
           <Route

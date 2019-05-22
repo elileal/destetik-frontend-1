@@ -133,7 +133,7 @@ export class PersonalData extends Component {
               </Col>
             </FormGroup>
           </FormGroup>
-          <Row style={{ justifyContent: 'center' }}>
+          <Row style={{ justifyContent: 'center', paddingTop: '4%' }}>
             <Button type='submit'>Salvar</Button>
           </Row>
         </Form>

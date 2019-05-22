@@ -63,6 +63,8 @@ code {
   background: #ffffff;
   border-radius: 10px;
   min-height: 522px;
+  height: 90%;
+  max-height: 1280px;
 }
 
 .profile-edit-image {
@@ -73,7 +75,7 @@ code {
 }
 
 .profile-edit-item-container {
-  padding: 10px;
+  padding: 4%;
 }
 
 /* --SideMenu-- */
