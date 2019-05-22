@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Input, Button, Col, Alert, Row } from 'reactstrap';
+import { Form, FormGroup, Input, Button, Col, Row } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import api from '../../../services/api';
+
+import ConfirmModal from './ConfirmModal';
 
 export class PersonalData extends Component {
   state = {
@@ -48,11 +50,11 @@ export class PersonalData extends Component {
     };
     const response = await api.patch('/api/user/update', updatedUser);
     if (response.status === 200) {
-      this.toggleAlert();
+      this.toggle();
     }
   };
 
-  toggleAlert = () => {
+  toggle = () => {
     this.setState({ visible: !this.state.visible });
   };
 
@@ -60,16 +62,14 @@ export class PersonalData extends Component {
     const style = {
       textAlign: 'left'
     };
+    const { visible } = this.state;
 
     return (
       <div className='personal-data-container'>
-        <Alert
-          color='info'
-          isOpen={this.state.visible}
-          toggle={this.toggleAlert}
-        >
-          Dados Atualizados com Sucesso.
-        </Alert>
+        <ConfirmModal
+          visible={visible}
+          toggle={this.toggle}
+        />
         <Form style={style} method='POST' onSubmit={this.handleSubmit}>
           <FormGroup>
             <h4>Dados Pessoais</h4>

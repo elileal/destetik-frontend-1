@@ -77,6 +77,21 @@ code {
   padding: 4%;
 }
 
+.modal-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.modal-confirm-elements {
+  margin-bottom: 20px;
+}
+
+.confirm-icon-modal {
+  font-size: 64px;  
+  margin-top: 10px;
+  color: #c3f0b8;
+}
+
 /* --SideMenu-- */
 
 .Side-menu-destetik {
