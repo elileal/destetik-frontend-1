@@ -56,15 +56,15 @@ class SidebarMenu extends React.Component {
 
   render() {
     return (
-      <div className='side-menu-container'>
+      <div className="side-menu-container">
         {this.handleRedirect()}
         <Media
-          className='profile-edit-image'
+          className="profile-edit-image"
           object
           src={this.props.profileImg}
         />
         <SideMenu
-          theme='destetik'
+          theme="destetik"
           activeItem={this.state.activeItem}
           items={this.state.itemsMenu}
           onMenuItemClick={this.onClickItem}

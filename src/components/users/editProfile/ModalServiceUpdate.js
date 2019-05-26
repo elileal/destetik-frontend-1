@@ -12,7 +12,7 @@ import {
 class ModalService extends React.Component {
   render() {
     const closeBtn = (
-      <button className='close' onClick={this.props.toggle}>
+      <button className="close" onClick={this.props.toggle}>
         &times;
       </button>
     );
@@ -31,8 +31,8 @@ class ModalService extends React.Component {
             <Form>
               Preço:
               <Input
-                type='number'
-                name='price'
+                type="number"
+                name="price"
                 onChange={this.props.handlePriceUpdateOnChange}
               />
             </Form>

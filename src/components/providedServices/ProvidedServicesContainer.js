@@ -79,36 +79,36 @@ export class ProvidedServicesContainer extends Component {
   };
 
   render() {
-    const loadingSpinner = <Spinner color='light' />;
+    const loadingSpinner = <Spinner color="light" />;
     const providedServicesContent = this.state.filteredUsers.map(user => {
       return <ProvidedService key={user.id} user={user} />;
     });
 
     return (
-      <div className='provided-services-container'>
-        <Row className='search-service'>
-          <Col sm='9'>
+      <div className="provided-services-container">
+        <Row className="search-service">
+          <Col sm="9">
             <InputGroup>
               <Input
-                type='search'
-                name='search'
-                placeholder='Pesquisar...'
+                type="search"
+                name="search"
+                placeholder="Pesquisar..."
                 value={this.state.search}
                 onChange={this.handleOnChange}
               />
               <Button>
-                <i className='fas fa-search' />
+                <i className="fas fa-search" />
               </Button>
             </InputGroup>
           </Col>
-          <Col sm='3'>
+          <Col sm="3">
             <Filters
               handleFilterOnChange={this.handleFilterOnChange}
               resetFilter={this.resetFilter}
             />
           </Col>
         </Row>
-        <Container className='container-service'>
+        <Container className="container-service">
           {this.state.loading ? loadingSpinner : providedServicesContent}
         </Container>
       </div>

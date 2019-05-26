@@ -36,16 +36,16 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div className='App'>
+          <div className="App">
             <NavBarDestetik />
-            <Container fluid className='main-container'>
-              <Route path='/edit' component={EditProfile} />
-              <Route path='/profile/:id' component={Profile} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/signup' component={Register} />
+            <Container fluid className="main-container">
+              <Route path="/edit" component={EditProfile} />
+              <Route path="/profile/:id" component={Profile} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Register} />
               <Route
                 exact
-                path='/services'
+                path="/services"
                 component={ProvidedServicesContainer}
               />
             </Container>

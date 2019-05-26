@@ -23,14 +23,14 @@ class Filters extends React.Component {
         <DropdownToggle caret>Filtros</DropdownToggle>
         <DropdownMenu>
           <DropdownItem onClick={this.props.resetFilter}>Todos</DropdownItem>
-          <DropdownItem id='manicure' onClick={this.props.handleFilterOnChange}>
+          <DropdownItem id="manicure" onClick={this.props.handleFilterOnChange}>
             Manicure
           </DropdownItem>
-          <DropdownItem id='pedicure' onClick={this.props.handleFilterOnChange}>
+          <DropdownItem id="pedicure" onClick={this.props.handleFilterOnChange}>
             Pedicure
           </DropdownItem>
           <DropdownItem
-            id='hidratacao'
+            id="hidratacao"
             onClick={this.props.handleFilterOnChange}
           >
             Hidratação

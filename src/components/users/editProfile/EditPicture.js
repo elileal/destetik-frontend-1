@@ -33,22 +33,23 @@ class EditPicture extends React.Component {
   };
   render() {
     const formPicture = (
-      <Form
-        style={{ justifyContent: 'center' }}
-        onSubmit={this.handleSubmit}
-      >
+      <Form style={{ justifyContent: 'center' }} onSubmit={this.handleSubmit}>
         <FormGroup>
           <h5>Escolhe uma foto para perfil:</h5>
           <Input
-            style={{border: '1px solid #f0b8e0', padding: '2px', borderRadius: '5px'}}
+            style={{
+              border: '1px solid #f0b8e0',
+              padding: '2px',
+              borderRadius: '5px'
+            }}
             onChange={this.handleOnChange}
-            type='file'
-            name='file'
-            id='profileImage'
+            type="file"
+            name="file"
+            id="profileImage"
           />
         </FormGroup>
         <FormGroup>
-          <Button type='submit'>Enviar</Button>
+          <Button type="submit">Enviar</Button>
         </FormGroup>
       </Form>
     );
@@ -56,7 +57,7 @@ class EditPicture extends React.Component {
     return (
       <>
         <h4 style={{ textAlign: 'left' }}>Editar Foto</h4>
-        <div className='delete-account-confirm'>
+        <div className="delete-account-confirm">
           {this.state.uploading ? (
             <Spinner style={{ color: '#f0b8e0' }} />
           ) : (

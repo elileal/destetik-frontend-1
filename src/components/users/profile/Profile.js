@@ -33,39 +33,42 @@ export class Profile extends Component {
       ));
     }
     return (
-      <Container className='profile-container centered-container' style={{ width: '60%' }}>
-        <Row className='profile-row mt-1 mb-1' style={{ height: 0 + 'px' }}>
+      <Container
+        className="profile-container centered-container"
+        style={{ width: '60%' }}
+      >
+        <Row className="profile-row mt-1 mb-1" style={{ height: 0 + 'px' }}>
           <Media
             style={{
               position: 'relative',
               bottom: 70 + 'px'
             }}
-            className='profile-image'
+            className="profile-image"
             object
             src={user.profileImg}
           />
         </Row>
-        <Row className='mt-1 mb-1' style={{ justifyContent: 'flex-end' }}>
+        <Row className="mt-1 mb-1" style={{ justifyContent: 'flex-end' }}>
           <Col sm={4}>
-            <DisplayInfo colorButton='info' info='Email' body={user.email} />{' '}
+            <DisplayInfo colorButton="info" info="Email" body={user.email} />{' '}
             <DisplayInfo
-              colorButton='primary'
-              info='Telefone'
+              colorButton="primary"
+              info="Telefone"
               body={user.phone ? user.phone : 'Telefone não adicionado'}
             />
           </Col>
         </Row>
         <h2>{user.name}</h2>
         <StarRatings
-          starDimension='20px'
+          starDimension="20px"
           rating={user.rating}
-          starRatedColor='grey'
+          starRatedColor="grey"
           numberOfStars={5}
         />
         <h6>{user.qtEvaluation} Avaliações</h6>
-        <Row className='profile-row mt-4 mb-4'>{servicesContent}</Row>
-        <Row className='profile-row mt-2 mb-2'>Mapa</Row>
-        <Row className='profile-row mt-2 mb-2'>
+        <Row className="profile-row mt-4 mb-4">{servicesContent}</Row>
+        <Row className="profile-row mt-2 mb-2">Mapa</Row>
+        <Row className="profile-row mt-2 mb-2">
           Serviços a partir de R$ 30.00
         </Row>
       </Container>

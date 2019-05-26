@@ -19,7 +19,7 @@ function ProvidedService(props) {
   return (
     <>
       <Row>
-        <Col sm='2' style={styleCol}>
+        <Col sm="2" style={styleCol}>
           <Link to={`profile/${props.user.id}`}>
             <Media
               style={{
@@ -32,15 +32,15 @@ function ProvidedService(props) {
             />
           </Link>
         </Col>
-        <Col sm='5' style={{ ...styleCol, flexDirection: 'column' }}>
-          <Link className='username-link' to={`profile/${props.user.id}`}>
-            <p className='user-text'>{props.user.name}</p>
+        <Col sm="5" style={{ ...styleCol, flexDirection: 'column' }}>
+          <Link className="username-link" to={`profile/${props.user.id}`}>
+            <p className="user-text">{props.user.name}</p>
           </Link>
-          <p className='user-text'>
+          <p className="user-text">
             {props.user.rating} ( {props.user.qtEvaluation} avaliações ){' '}
           </p>
         </Col>
-        <Col sm='2' style={styleCol}>
+        <Col sm="2" style={styleCol}>
           {props.user.services.map(item => (
             <Media
               key={item._id}
@@ -52,7 +52,7 @@ function ProvidedService(props) {
             />
           ))}
         </Col>
-        <Col sm='3' style={styleCol}>
+        <Col sm="3" style={styleCol}>
           <p style={{ margin: 2 + 'px' }}>
             A partir de R$ {props.user.minimumPrice}
           </p>
