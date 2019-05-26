@@ -63,10 +63,7 @@ export class ProvidedServicesContainer extends Component {
     this.setState({
       filteredUsers: this.state.users.filter(user => {
         let servicesFiltered = user.services.filter(service => {
-          if (
-            service.serviceId.name.toLowerCase() === serviceFilter.toLowerCase()
-          )
-            return true;
+          if (service.serviceId._id === serviceFilter) return true;
           return false;
         });
         return servicesFiltered.length > 0;

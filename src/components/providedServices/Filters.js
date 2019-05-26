@@ -6,10 +6,18 @@ import {
   DropdownItem
 } from 'reactstrap';
 
+import Api from '../../services/Api/index';
+
 class Filters extends React.Component {
   state = {
-    dropdownOpen: false
+    dropdownOpen: false,
+    services: []
   };
+
+  async componentDidMount() {
+    const services = await Api.Services.getAll();
+    this.setState({ services });
+  }
 
   toggle = () => {
     this.setState(prevState => ({
@@ -18,23 +26,21 @@ class Filters extends React.Component {
   };
 
   render() {
+    const { services } = this.state;
     return (
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle caret>Filtros</DropdownToggle>
         <DropdownMenu>
           <DropdownItem onClick={this.props.resetFilter}>Todos</DropdownItem>
-          <DropdownItem id="manicure" onClick={this.props.handleFilterOnChange}>
-            Manicure
-          </DropdownItem>
-          <DropdownItem id="pedicure" onClick={this.props.handleFilterOnChange}>
-            Pedicure
-          </DropdownItem>
-          <DropdownItem
-            id="hidratacao"
-            onClick={this.props.handleFilterOnChange}
-          >
-            Hidratação
-          </DropdownItem>
+          {services.map((service, index) => (
+            <DropdownItem
+              id={service._id}
+              key={index}
+              onClick={this.props.handleFilterOnChange}
+            >
+              {service.name}
+            </DropdownItem>
+          ))}
         </DropdownMenu>
       </Dropdown>
     );
