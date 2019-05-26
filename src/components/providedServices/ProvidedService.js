@@ -46,9 +46,7 @@ function ProvidedService(props) {
               key={item._id}
               style={styleServices}
               object
-              src={
-                'https://destetik-backend.herokuapp.com/' + item.serviceId.image
-              }
+              src={item.serviceId.image}
             />
           ))}
         </Col>
