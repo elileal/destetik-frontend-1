@@ -8,7 +8,7 @@ import {
   Button,
   Spinner
 } from 'reactstrap';
-import api from '../../services/api';
+import Api from '../../services/Api/index';
 
 import Filters from './Filters';
 import ProvidedService from './ProvidedService';
@@ -23,10 +23,8 @@ export class ProvidedServicesContainer extends Component {
 
   async componentDidMount() {
     this.setState({ filteredUsers: this.state.users });
-    const response = await api.get('/api/user/all');
-    let usersWithServices = response.data.filter(
-      user => user.services.length > 0
-    );
+    const response = await Api.Users.getAll();
+    let usersWithServices = response.filter(user => user.services.length > 0);
     usersWithServices = usersWithServices.map(user => {
       let minimumPrice = 10000;
       user.services.forEach(service => {
