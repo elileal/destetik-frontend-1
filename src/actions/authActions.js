@@ -1,4 +1,3 @@
-import api from '../services/api';
 import Api from '../services/Api/index';
 import { GET_ERRORS, SET_CURRENT_USER } from './types';
 import setAuthToken from '../utils/setAuthToken';
