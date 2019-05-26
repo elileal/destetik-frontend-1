@@ -4,8 +4,8 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
   Form,
+  FormGroup,
   Input
 } from 'reactstrap';
 
@@ -28,18 +28,22 @@ class ModalService extends React.Component {
             Atualizar Serviço
           </ModalHeader>
           <ModalBody>
-            <Form>
-              Preço:
-              <Input
-                type="number"
-                name="price"
-                onChange={this.props.handlePriceUpdateOnChange}
-              />
+            <Form method="post" onSubmit={this.props.updateService}>
+              <FormGroup>
+                Preço:
+                <Input
+                  type="number"
+                  name="price"
+                  onChange={this.props.handlePriceUpdateOnChange}
+                />
+              </FormGroup>
+              <FormGroup
+                style={{ display: 'flex', justifyContent: 'flex-end' }}
+              >
+                <Button type="submit">Atualizar</Button>
+              </FormGroup>
             </Form>
           </ModalBody>
-          <ModalFooter>
-            <Button onClick={this.props.updateService}>Atualizar</Button>
-          </ModalFooter>
         </Modal>
       </div>
     );
