@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Input, Button, Col, Row } from 'reactstrap';
+import InputMask from 'react-input-mask';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import api from '../../../services/api';
@@ -37,7 +38,12 @@ export class PersonalData extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const { name, email, phone, street, district, houseNumber } = this.state;
+    const { name, email, street, district, houseNumber } = this.state;
+    const phone = this.state.phone
+      .split(' ')
+      .join('')
+      .split('-')
+      .join('');
     const updatedUser = {
       name,
       email,
@@ -65,19 +71,16 @@ export class PersonalData extends Component {
     const { visible } = this.state;
 
     return (
-      <div className='personal-data-container'>
-        <ConfirmModal
-          visible={visible}
-          toggle={this.toggle}
-        />
-        <Form style={style} method='POST' onSubmit={this.handleSubmit}>
+      <div className="personal-data-container">
+        <ConfirmModal visible={visible} toggle={this.toggle} />
+        <Form style={style} method="POST" onSubmit={this.handleSubmit}>
           <FormGroup>
             <h4>Dados Pessoais</h4>
             <FormGroup>
               Nome:
               <Input
-                type='text'
-                name='name'
+                type="text"
+                name="name"
                 onChange={this.handleOnChange}
                 value={this.state.name}
               />
@@ -85,19 +88,21 @@ export class PersonalData extends Component {
             <FormGroup>
               Email:
               <Input
-                type='email'
-                name='email'
+                type="email"
+                name="email"
                 onChange={this.handleOnChange}
                 value={this.state.email}
               />
             </FormGroup>
             <FormGroup>
               Telefone:
-              <Input
-                type='text'
-                name='phone'
+              <InputMask
+                className="form-control"
+                name="phone"
                 onChange={this.handleOnChange}
                 value={this.state.phone}
+                mask="+5\5 99 99999-9999"
+                alwaysShowMask={false}
               />
             </FormGroup>
           </FormGroup>
@@ -106,8 +111,8 @@ export class PersonalData extends Component {
             <FormGroup>
               Endereço:
               <Input
-                type='text'
-                name='street'
+                type="text"
+                name="street"
                 onChange={this.handleOnChange}
                 value={this.state.street}
               />
@@ -116,8 +121,8 @@ export class PersonalData extends Component {
               <Col>
                 Bairro:
                 <Input
-                  type='text'
-                  name='district'
+                  type="text"
+                  name="district"
                   onChange={this.handleOnChange}
                   value={this.state.district}
                 />
@@ -125,8 +130,8 @@ export class PersonalData extends Component {
               <Col>
                 Número:
                 <Input
-                  type='text'
-                  name='houseNumber'
+                  type="text"
+                  name="houseNumber"
                   onChange={this.handleOnChange}
                   value={this.state.houseNumber}
                 />
@@ -134,7 +139,7 @@ export class PersonalData extends Component {
             </FormGroup>
           </FormGroup>
           <Row style={{ justifyContent: 'center', paddingTop: '4%' }}>
-            <Button type='submit'>Salvar</Button>
+            <Button type="submit">Salvar</Button>
           </Row>
         </Form>
       </div>
