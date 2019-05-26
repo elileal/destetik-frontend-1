@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Input, Spinner } from 'reactstrap';
-import api from '../../../services/api';
+import Api from '../../../services/Api/index';
 import { connect } from 'react-redux';
 
 class EditPicture extends React.Component {
@@ -20,16 +20,14 @@ class EditPicture extends React.Component {
           'content-type': 'multipart/form-data'
         }
       };
-      await api.patch('/api/user/image_update', formData, config);
+      await Api.Users.updateImage(formData, config);
       window.location.href = '/edit/dados-pessoais';
       this.setState({ uploading: false });
     }
   };
 
   handleOnChange = e => {
-    this.setState({ file: e.target.files[0] }, () => {
-      console.log(this.state.file);
-    });
+    this.setState({ file: e.target.files[0] });
   };
   render() {
     const formPicture = (
