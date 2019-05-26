@@ -101,11 +101,11 @@ export class AddService extends Component {
     this.toggle();
   };
 
-  updateService = async () => {
+  updateService = async e => {
+    e.preventDefault();
     const { newPrice } = this.state.updateService;
     await Api.ProvidedServices.update(this.state.updateService.id, newPrice);
     this.toggleUpdate();
-    window.location.reload();
   };
 
   deleteService = async e => {
