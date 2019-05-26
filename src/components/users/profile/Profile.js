@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Media } from 'reactstrap';
 import StarRatings from 'react-star-ratings';
-import api from '../../../services/api';
+import Api from '../../../services/Api/index';
 
 import DisplayInfo from './DisplayInfo';
 import DisplayProvidedService from './DisplayProvidedService';
@@ -14,8 +14,8 @@ export class Profile extends Component {
 
   async componentDidMount() {
     const userId = this.props.match.params.id;
-    const response = await api.get(`/api/user/show/${userId}`);
-    this.setState({ user: response.data });
+    const response = await Api.Users.show(userId);
+    this.setState({ user: response });
   }
 
   render() {
