@@ -49,7 +49,7 @@ export class AddService extends Component {
   };
 
   async componentDidMount() {
-    const response = await api.get('/api/provided/avaliable');
+    const response = await api.get('/api/provided/available');
     const services = response.data;
     this.setState({ services });
     const responseProvided = await api.get('/api/provided/show');
@@ -163,12 +163,12 @@ export class AddService extends Component {
                   <td>
                     <p>
                       <i
-                        className='fas fa-edit edit-icon custom-icon'
+                        className="fas fa-edit edit-icon custom-icon"
                         onClick={this.toggleUpdate}
                       />
                       {'  '}
                       <i
-                        className='fas fa-trash delete-icon custom-icon'
+                        className="fas fa-trash delete-icon custom-icon"
                         onClick={this.deleteService}
                       />
                     </p>
@@ -179,7 +179,7 @@ export class AddService extends Component {
           </Table>
         </Row>
         <Row style={styleFloat}>
-          <Fab size='medium' onClick={this.toggle}>
+          <Fab size="medium" onClick={this.toggle}>
             <Icon>add_icon</Icon>
           </Fab>
         </Row>
