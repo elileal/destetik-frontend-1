@@ -26,9 +26,7 @@ export class Profile extends Component {
         <DisplayProvidedService
           key={service._id}
           name={service.serviceId.name}
-          src={`https://destetik-backend.herokuapp.com/${
-            service.serviceId.image
-          }`}
+          src={service.serviceId.image}
         />
       ));
     }
