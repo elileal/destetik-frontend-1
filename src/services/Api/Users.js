@@ -5,4 +5,9 @@ const getAll = async () => {
   return response.data;
 };
 
-export default { getAll };
+const register = async userData =>
+  await api.post('api/user/register', userData);
+
+const login = async userData => await api.post('api/user/login', userData);
+
+export default { getAll, register, login };

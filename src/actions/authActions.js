@@ -1,11 +1,12 @@
 import api from '../services/api';
+import Api from '../services/Api/index';
 import { GET_ERRORS, SET_CURRENT_USER } from './types';
 import setAuthToken from '../utils/setAuthToken';
 import jwtDecode from 'jwt-decode';
 
 export const registerUser = (userData, history) => async dispatch => {
   try {
-    const response = await api.post('api/user/register', userData);
+    const response = await Api.Users.register(userData);
     if (response.status === 200) history.push('/login');
   } catch (err) {
     dispatch({
@@ -17,7 +18,7 @@ export const registerUser = (userData, history) => async dispatch => {
 
 export const loginUser = userData => async dispatch => {
   try {
-    const response = await api.post('api/user/login', userData);
+    const response = await Api.Users.login(userData);
     if (response.status === 200) {
       const { token } = response.data;
       localStorage.setItem('jwtToken', token);
