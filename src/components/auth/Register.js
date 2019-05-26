@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Form, Button, FormGroup, Input } from 'reactstrap';
+import { Form, Button, FormGroup, Input, FormFeedback } from 'reactstrap';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import checkValidation from '../../utils/checkValidation';
 
 export class Register extends Component {
   state = {
@@ -38,11 +39,17 @@ export class Register extends Component {
 
   render() {
     const { name, email, password, password2 } = this.state;
+
+    const { errors } = this.props;
+    const validation = checkValidation(errors);
     return (
-      <div className='centered-container' style={{ width: '400px', marginTop: '3%' }}>
+      <div
+        className="centered-container"
+        style={{ width: '400px', marginTop: '3%' }}
+      >
         <Form
-          className='register-form'
-          method='POST'
+          className="register-form"
+          method="POST"
           onSubmit={this.handleSubmit}
         >
           <FormGroup>
@@ -51,43 +58,51 @@ export class Register extends Component {
           </FormGroup>
           <FormGroup row>
             <Input
-              type='text'
-              name='name'
-              placeholder='Nome'
+              {...validation.nameValidation}
+              type="text"
+              name="name"
+              placeholder="Nome"
               value={name}
               onChange={this.handleOnChange}
             />
+            <FormFeedback>{errors.name}</FormFeedback>
           </FormGroup>
           <FormGroup row>
             <Input
-              type='email'
-              name='email'
-              placeholder='E-mail'
+              {...validation.emailValidation}
+              type="email"
+              name="email"
+              placeholder="E-mail"
               value={email}
               onChange={this.handleOnChange}
             />
+            <FormFeedback>{errors.email}</FormFeedback>
           </FormGroup>
           <FormGroup row>
             <Input
-              type='password'
-              name='password'
-              placeholder='Senha'
+              {...validation.passwordValidation}
+              type="password"
+              name="password"
+              placeholder="Senha"
               value={password}
               onChange={this.handleOnChange}
             />
+            <FormFeedback>{errors.password}</FormFeedback>
           </FormGroup>
           <FormGroup row>
             <Input
-              type='password'
-              name='password2'
-              placeholder='Confirme sua Senha'
+              {...validation.password2Validation}
+              type="password"
+              name="password2"
+              placeholder="Confirme sua Senha"
               value={password2}
               onChange={this.handleOnChange}
             />
+            <FormFeedback>{errors.password2}</FormFeedback>
           </FormGroup>
-          <Button type='submit'>Registre-se</Button>
+          <Button type="submit">Registre-se</Button>
           <p style={{ marginTop: 16 + 'px' }}>
-            Já registrado? <a href='/login'>Faça o login aqui.</a>
+            Já registrado? <a href="/login">Faça o login aqui.</a>
           </p>
         </Form>
       </div>
