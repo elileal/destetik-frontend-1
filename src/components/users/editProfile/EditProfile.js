@@ -3,13 +3,14 @@ import { Container, Col } from 'reactstrap';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import api from '../../services/api';
+import Api from '../../../services/Api/index';
 
 import SidebarMenu from './SidebarMenu';
 import PersonalData from './PersonalData';
 import AddService from './AddService';
 import DeleteAccount from './DeleteAccount';
 import EditPicture from './EditPicture';
+import Location from './Location';
 
 export class EditProfile extends Component {
   state = {
@@ -20,8 +21,8 @@ export class EditProfile extends Component {
     if (!this.props.auth.isAuthenticated) {
       this.props.history.push('/login');
     }
-    const response = await api.get('/api/user/current');
-    this.setState({ user: response.data });
+    const response = await Api.Users.current();
+    this.setState({ user: response });
   }
 
   render() {
@@ -31,18 +32,26 @@ export class EditProfile extends Component {
     };
     const { user } = this.state;
     return (
-      <Container className='profile-edit-container' style={style}>
+      <Container
+        className="profile-edit-container centered-container"
+        style={style}
+      >
         <SidebarMenu profileImg={user.profileImg} />
-        <Col className='profile-edit-item-container'>
-          <Route
-            exact
-            path={`${this.props.match.path}/editar-foto`}
-            component={EditPicture}
-          />
+        <Col className="profile-edit-item-container">
           <Route
             exact
             path={`${this.props.match.path}/dados-pessoais`}
             component={PersonalData}
+          />
+          <Route
+            exact
+            path={`${this.props.match.path}/localizacao`}
+            component={Location}
+          />
+          <Route
+            exact
+            path={`${this.props.match.path}/editar-foto`}
+            component={EditPicture}
           />
           <Route
             exact

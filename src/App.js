@@ -14,7 +14,7 @@ import { Container } from 'reactstrap';
 import NavBarDestetik from './components/layout/NavBarDestetik';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import EditProfile from './components/users/EditProfile';
+import EditProfile from './components/users/editProfile/EditProfile';
 import ProvidedServicesContainer from './components/providedServices/ProvidedServicesContainer';
 import Profile from './components/users/profile/Profile';
 
@@ -36,16 +36,16 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div className='App'>
+          <div className="App">
             <NavBarDestetik />
-            <Container fluid className='main-container'>
-              <Route path='/edit' component={EditProfile} />
-              <Route path='/profile/:id' component={Profile} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/signup' component={Register} />
+            <Container fluid className="main-container">
+              <Route path="/edit" component={EditProfile} />
+              <Route path="/profile/:id" component={Profile} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Register} />
               <Route
                 exact
-                path='/services'
+                path="/services"
                 component={ProvidedServicesContainer}
               />
             </Container>

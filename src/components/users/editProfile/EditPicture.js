@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Input, Spinner } from 'reactstrap';
-import api from '../../services/api';
+import Api from '../../../services/Api/index';
 import { connect } from 'react-redux';
 
 class EditPicture extends React.Component {
@@ -20,34 +20,34 @@ class EditPicture extends React.Component {
           'content-type': 'multipart/form-data'
         }
       };
-      await api.patch('/api/user/image_update', formData, config);
+      await Api.Users.updateImage(formData, config);
       window.location.href = '/edit/dados-pessoais';
       this.setState({ uploading: false });
     }
   };
 
   handleOnChange = e => {
-    this.setState({ file: e.target.files[0] }, () => {
-      console.log(this.state.file);
-    });
+    this.setState({ file: e.target.files[0] });
   };
   render() {
     const formPicture = (
-      <Form
-        style={{ display: 'center', justifyContent: 'center' }}
-        onSubmit={this.handleSubmit}
-      >
+      <Form style={{ justifyContent: 'center' }} onSubmit={this.handleSubmit}>
         <FormGroup>
           <h5>Escolhe uma foto para perfil:</h5>
           <Input
+            style={{
+              border: '1px solid #f0b8e0',
+              padding: '2px',
+              borderRadius: '5px'
+            }}
             onChange={this.handleOnChange}
-            type='file'
-            name='file'
-            id='profileImage'
+            type="file"
+            name="file"
+            id="profileImage"
           />
         </FormGroup>
         <FormGroup>
-          <Button type='submit'>Enviar</Button>
+          <Button type="submit">Enviar</Button>
         </FormGroup>
       </Form>
     );
@@ -55,7 +55,7 @@ class EditPicture extends React.Component {
     return (
       <>
         <h4 style={{ textAlign: 'left' }}>Editar Foto</h4>
-        <div className='delete-account-confirm'>
+        <div className="delete-account-confirm">
           {this.state.uploading ? (
             <Spinner style={{ color: '#f0b8e0' }} />
           ) : (

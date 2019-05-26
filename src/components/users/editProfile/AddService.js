@@ -4,7 +4,7 @@ import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import api from '../../services/api';
+import Api from '../../../services/Api/index';
 
 import ModalServiceUpdate from './ModalServiceUpdate';
 import ModalService from './ModalService';
@@ -48,12 +48,12 @@ export class AddService extends Component {
     }));
   };
 
-  async componentDidMount() {
-    const response = await api.get('/api/provided/avaliable');
-    const services = response.data;
+  async componentDidUpdate() {
+    const response = await Api.ProvidedServices.getAvailable();
+    const services = response;
     this.setState({ services });
-    const responseProvided = await api.get('/api/provided/show');
-    const providedServices = responseProvided.data.map(providedService => ({
+    const responseProvided = await Api.ProvidedServices.show();
+    const providedServices = responseProvided.map(providedService => ({
       id: providedService._id,
       name: providedService.serviceId.name,
       price: providedService.price
@@ -89,12 +89,9 @@ export class AddService extends Component {
   };
 
   addService = async () => {
-    const response = await api.post(
-      '/api/provided/create',
-      this.state.addService
-    );
+    const response = await Api.ProvidedServices.add(this.state.addService);
     const newProvidedService = {
-      id: response.data._id,
+      id: response._id,
       price: this.state.addService.price,
       name: this.state.addService.service
     };
@@ -105,12 +102,10 @@ export class AddService extends Component {
   };
 
   updateService = async e => {
+    e.preventDefault();
     const { newPrice } = this.state.updateService;
-    await api.patch(`/api/provided/update/${this.state.updateService.id}`, {
-      price: newPrice
-    });
+    await Api.ProvidedServices.update(this.state.updateService.id, newPrice);
     this.toggleUpdate();
-    window.location.reload();
   };
 
   deleteService = async e => {
@@ -118,7 +113,7 @@ export class AddService extends Component {
     const serviceId = e.target.parentNode.parentNode.parentNode.getAttribute(
       'data-key'
     );
-    const response = await api.delete(`/api/provided/delete/${serviceId}`);
+    await Api.ProvidedServices.remove(serviceId);
     const providedServices = this.state.providedServices.filter(
       providedService => providedService.id !== serviceId
     );
@@ -163,12 +158,12 @@ export class AddService extends Component {
                   <td>
                     <p>
                       <i
-                        className='fas fa-edit edit-icon custom-icon'
+                        className="fas fa-edit edit-icon custom-icon"
                         onClick={this.toggleUpdate}
                       />
                       {'  '}
                       <i
-                        className='fas fa-trash delete-icon custom-icon'
+                        className="fas fa-trash delete-icon custom-icon"
                         onClick={this.deleteService}
                       />
                     </p>
@@ -179,7 +174,7 @@ export class AddService extends Component {
           </Table>
         </Row>
         <Row style={styleFloat}>
-          <Fab size='medium' onClick={this.toggle}>
+          <Fab size="medium" onClick={this.toggle}>
             <Icon>add_icon</Icon>
           </Fab>
         </Row>

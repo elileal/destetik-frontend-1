@@ -8,9 +8,9 @@ function DisplayInfo(props) {
         {props.info}
       </Button>
       <UncontrolledPopover
-        placement='bottom'
+        placement="bottom"
         target={props.info}
-        trigger='focus'
+        trigger="focus"
       >
         <PopoverBody>{props.body}</PopoverBody>
       </UncontrolledPopover>

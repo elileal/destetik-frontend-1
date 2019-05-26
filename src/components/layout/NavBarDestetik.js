@@ -44,7 +44,7 @@ class NavBarDestetik extends React.Component {
         right
         style={{ background: 'rgba(255, 255, 255, 0.0)', borderTop: '0px' }}
       >
-        <DropdownItem href='/edit/dados-pessoais'>Profile</DropdownItem>
+        <DropdownItem href="/edit/dados-pessoais">Profile</DropdownItem>
         <DropdownItem onClick={this.handleLogout}>Logout</DropdownItem>
       </DropdownMenu>
     );
@@ -54,8 +54,8 @@ class NavBarDestetik extends React.Component {
         right
         style={{ background: 'rgba(255, 255, 255, 0.0)', borderTop: '0px' }}
       >
-        <DropdownItem href='/login'>Login</DropdownItem>
-        <DropdownItem href='/signup'>Registro</DropdownItem>
+        <DropdownItem href="/login">Login</DropdownItem>
+        <DropdownItem href="/signup">Registro</DropdownItem>
       </DropdownMenu>
     );
 
@@ -66,20 +66,20 @@ class NavBarDestetik extends React.Component {
 
     return (
       <div>
-        <Navbar light expand='md' className='navbar-destetik'>
-          <NavbarBrand href='/' className='logo' style={logoStyle}>
+        <Navbar light expand="md" className="navbar-destetik">
+          <NavbarBrand href="/" className="logo" style={logoStyle}>
             Destetik
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className='ml-auto' navbar>
+            <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href='/services'>Serviços</NavLink>
+                <NavLink href="/services">Serviços</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle
-                  className='dropdown-menu-div'
-                  tag='div'
+                  className="dropdown-menu-div"
+                  tag="div"
                   nav
                   caret
                 >
