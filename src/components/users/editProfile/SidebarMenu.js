@@ -9,24 +9,24 @@ class SidebarMenu extends React.Component {
     redirect: false,
     itemsMenu: [
       {
-        label: 'Editar Foto',
-        value: 'editar-foto',
-        icon: 'fa-camera'
-      },
-      {
         label: 'Dados Pessoais',
         value: 'dados-pessoais',
         icon: 'fa-user'
       },
       {
+        label: 'Localização',
+        value: 'localizacao',
+        icon: 'fa-map-marker-alt'
+      },
+      {
+        label: 'Editar Foto',
+        value: 'editar-foto',
+        icon: 'fa-camera'
+      },
+      {
         label: 'Adicionar Serviços',
         value: 'add-servicos',
         icon: 'fa-briefcase'
-      },
-      {
-        label: 'Histórico',
-        value: 'historico',
-        icon: 'fa-list-alt'
       },
       {
         label: 'Formas de Pagamento',
