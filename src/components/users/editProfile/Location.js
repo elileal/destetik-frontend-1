@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Input, Button, Col, Row } from 'reactstrap';
+import InputMask from 'react-input-mask';
 import ConfirmModal from './ConfirmModal';
+import getAddressFromViaCEP from '../../../services/ViaCepAPI';
+import Api from '../../../services/Api/index';
 
 class Location extends Component {
   state = {
@@ -12,13 +15,21 @@ class Location extends Component {
     visible: false
   };
 
-  // let street, district, houseNumber;
-  // street = district = houseNumber = '';
-  // if (response.data.address) {
-  //   street = response.data.address.street;
-  //   district = response.data.address.district;
-  //   houseNumber = response.data.address.houseNumber;
-  // }
+  async componentDidMount() {
+    const response = await Api.Users.current();
+    let street, district, houseNumber;
+    street = district = houseNumber = '';
+    if (response.address) {
+      street = response.data.address.street;
+      district = response.data.address.district;
+      houseNumber = response.data.address.houseNumber;
+      this.setState({
+        street,
+        district,
+        houseNumber
+      });
+    }
+  }
 
   toggle = () => {
     this.setState({ visible: !this.state.visible });
@@ -31,6 +42,15 @@ class Location extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.toggle();
+  };
+
+  handleAddressRequest = async e => {
+    const response = await getAddressFromViaCEP(e.target.value);
+    this.setState({
+      street: response.logradouro,
+      district: response.bairro,
+      city: response.localidade
+    });
   };
 
   render() {
@@ -55,17 +75,21 @@ class Location extends Component {
             <FormGroup row>
               <Col md="3">
                 CEP:
-                <Input
-                  type="text"
+                <InputMask
+                  className="form-control"
                   name="cep"
                   onChange={this.handleOnChange}
+                  onBlur={this.handleAddressRequest}
                   value={this.state.cep}
+                  mask="99999-999"
+                  maskChar=""
+                  alwaysShowMask={false}
                 />
               </Col>
               <Col md="11">
                 Rua:
                 <Input
-                  type="email"
+                  type="text"
                   name="street"
                   onChange={this.handleOnChange}
                   value={this.state.street}
@@ -93,11 +117,13 @@ class Location extends Component {
               </Col>
               <Col md="2">
                 Número:
-                <Input
-                  type="number"
+                <InputMask
+                  className="form-control"
                   name="houseNumber"
                   onChange={this.handleOnChange}
                   value={this.state.houseNumber}
+                  maskChar=""
+                  mask="999"
                 />
               </Col>
             </FormGroup>
