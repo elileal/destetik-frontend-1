@@ -228,6 +228,15 @@ code {
   text-shadow: -1px 0px 9px rgb(165, 110, 253);
 }
 
+.username-image {
+  transform: scale(1);
+  transition: 0.3s ease-in-out;
+}
+
+.username-image:hover {
+  transform: scale(1.1);
+}
+
 .user-text {
   margin: 2px;
 }
