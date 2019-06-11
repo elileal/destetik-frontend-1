@@ -29,7 +29,9 @@ class Filters extends React.Component {
     const { services } = this.state;
     return (
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>Filtros</DropdownToggle>
+        <DropdownToggle className="btn-custom-secondary" caret>
+          Filtros
+        </DropdownToggle>
         <DropdownMenu>
           <DropdownItem onClick={this.props.resetFilter}>Todos</DropdownItem>
           {services.map((service, index) => (

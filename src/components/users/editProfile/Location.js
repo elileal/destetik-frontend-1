@@ -17,15 +17,19 @@ class Location extends Component {
 
   async componentDidMount() {
     const response = await Api.Users.current();
-    let street, district, houseNumber;
-    street = district = houseNumber = '';
+    let cep, street, district, city, houseNumber;
+    cep = street = district = city = houseNumber = '';
     if (response.address) {
-      street = response.data.address.street;
-      district = response.data.address.district;
-      houseNumber = response.data.address.houseNumber;
+      cep = response.address.cep;
+      street = response.address.street;
+      district = response.address.district;
+      city = response.address.city;
+      houseNumber = response.address.houseNumber;
       this.setState({
+        cep,
         street,
         district,
+        city,
         houseNumber
       });
     }
@@ -39,9 +43,22 @@ class Location extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
-    this.toggle();
+    const { cep, street, district, city, houseNumber } = this.state;
+    const userNewData = {
+      address: {
+        cep,
+        street,
+        district,
+        city,
+        houseNumber
+      }
+    };
+    const response = await Api.Users.update(userNewData);
+    if (response.status === 200) {
+      this.toggle();
+    }
   };
 
   handleAddressRequest = async e => {
@@ -129,7 +146,9 @@ class Location extends Component {
             </FormGroup>
           </FormGroup>
           <Row style={{ justifyContent: 'center', paddingTop: '4%' }}>
-            <Button type="submit">Salvar</Button>
+            <Button className="btn-custom-primary" type="submit">
+              Salvar
+            </Button>
           </Row>
         </Form>
       </>

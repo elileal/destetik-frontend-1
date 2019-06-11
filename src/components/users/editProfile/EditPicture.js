@@ -47,7 +47,9 @@ class EditPicture extends React.Component {
           />
         </FormGroup>
         <FormGroup>
-          <Button type="submit">Enviar</Button>
+          <Button className="btn-custom-primary" type="submit">
+            Enviar
+          </Button>
         </FormGroup>
       </Form>
     );

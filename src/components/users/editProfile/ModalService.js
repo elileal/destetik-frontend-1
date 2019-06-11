@@ -50,7 +50,12 @@ class ModalService extends React.Component {
             </Form>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={this.props.addService}>Adicionar</Button>
+            <Button
+              className="btn-custom-primary"
+              onClick={this.props.addService}
+            >
+              Adicionar
+            </Button>
           </ModalFooter>
         </Modal>
       </div>

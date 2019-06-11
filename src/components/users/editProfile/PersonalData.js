@@ -98,7 +98,9 @@ export class PersonalData extends Component {
             </FormGroup>
           </FormGroup>
           <Row style={{ justifyContent: 'center', paddingTop: '4%' }}>
-            <Button type="submit">Salvar</Button>
+            <Button className="btn-custom-primary" type="submit">
+              Salvar
+            </Button>
           </Row>
         </Form>
       </>

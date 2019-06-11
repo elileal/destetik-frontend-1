@@ -16,7 +16,9 @@ function DeleteAccount(props) {
       <h4 style={{ textAlign: 'left' }}>Excluir Conta</h4>
       <div className="delete-account-confirm">
         <p>Você deseja excluir sua conta?</p>
-        <Button onClick={onDelete}>Excluir</Button>
+        <Button className="btn-custom-primary" onClick={onDelete}>
+          Excluir
+        </Button>
       </div>
     </>
   );
