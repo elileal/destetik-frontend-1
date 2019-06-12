@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, FormGroup, Input, Button, Col, Row } from 'reactstrap';
 import InputMask from 'react-input-mask';
 import ConfirmModal from './ConfirmModal';
+
 import getAddressFromViaCEP from '../../../services/ViaCepAPI';
 import Api from '../../../services/Api/index';
 

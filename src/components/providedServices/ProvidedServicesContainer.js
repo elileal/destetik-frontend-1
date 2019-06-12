@@ -9,10 +9,8 @@ import {
   Spinner
 } from 'reactstrap';
 import { TransitionGroup } from 'react-transition-group';
-import LightSpeed from 'react-reveal/LightSpeed';
-
 import Api from '../../services/Api/index';
-
+import LightSpeed from 'react-reveal/LightSpeed';
 import Filters from './Filters';
 import ProvidedService from './ProvidedService';
 
@@ -80,7 +78,7 @@ export class ProvidedServicesContainer extends Component {
     const loadingSpinner = <Spinner color="light" />;
     const providedServicesContent = this.state.filteredUsers.map(user => {
       return (
-        <LightSpeed top collapse>
+        <LightSpeed collapse key={user.id}>
           <ProvidedService key={user.id} user={user} />
         </LightSpeed>
       );
@@ -114,7 +112,9 @@ export class ProvidedServicesContainer extends Component {
           {this.state.loading ? (
             loadingSpinner
           ) : (
-            <TransitionGroup>{providedServicesContent}</TransitionGroup>
+            <TransitionGroup appear={false} enter={true} exit={true}>
+              {providedServicesContent}
+            </TransitionGroup>
           )}
         </Container>
       </div>

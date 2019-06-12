@@ -3,6 +3,8 @@ import { Form, FormGroup, Input, Button, Row } from 'reactstrap';
 import InputMask from 'react-input-mask';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Slide from 'react-reveal/Slide';
+
 import Api from '../../../services/Api/index';
 
 import ConfirmModal from './ConfirmModal';
@@ -52,7 +54,7 @@ export class PersonalData extends Component {
     const { visible } = this.state;
 
     return (
-      <>
+      <Slide right>
         <ConfirmModal visible={visible} toggle={this.toggle} />
         <h4 style={{ textAlign: 'left' }}>Dados Pessoais</h4>
         <Form
@@ -103,7 +105,7 @@ export class PersonalData extends Component {
             </Button>
           </Row>
         </Form>
-      </>
+      </Slide>
     );
   }
 }
