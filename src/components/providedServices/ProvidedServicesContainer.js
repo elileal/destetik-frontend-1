@@ -8,8 +8,9 @@ import {
   Button,
   Spinner
 } from 'reactstrap';
+import { TransitionGroup } from 'react-transition-group';
 import Api from '../../services/Api/index';
-
+import LightSpeed from 'react-reveal/LightSpeed';
 import Filters from './Filters';
 import ProvidedService from './ProvidedService';
 
@@ -76,7 +77,11 @@ export class ProvidedServicesContainer extends Component {
   render() {
     const loadingSpinner = <Spinner color="light" />;
     const providedServicesContent = this.state.filteredUsers.map(user => {
-      return <ProvidedService key={user.id} user={user} />;
+      return (
+        <LightSpeed collapse key={user.id}>
+          <ProvidedService key={user.id} user={user} />
+        </LightSpeed>
+      );
     });
 
     return (
@@ -91,7 +96,7 @@ export class ProvidedServicesContainer extends Component {
                 value={this.state.search}
                 onChange={this.handleOnChange}
               />
-              <Button>
+              <Button className="btn-custom-secondary">
                 <i className="fas fa-search" />
               </Button>
             </InputGroup>
@@ -104,7 +109,13 @@ export class ProvidedServicesContainer extends Component {
           </Col>
         </Row>
         <Container className="container-service">
-          {this.state.loading ? loadingSpinner : providedServicesContent}
+          {this.state.loading ? (
+            loadingSpinner
+          ) : (
+            <TransitionGroup appear={false} enter={true} exit={true}>
+              {providedServicesContent}
+            </TransitionGroup>
+          )}
         </Container>
       </div>
     );

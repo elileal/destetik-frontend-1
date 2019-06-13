@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Form, FormGroup, Input, Spinner } from 'reactstrap';
 import Api from '../../../services/Api/index';
 import { connect } from 'react-redux';
+import Jump from 'react-reveal/Jump';
 
 class EditPicture extends React.Component {
   state = {
@@ -47,13 +48,15 @@ class EditPicture extends React.Component {
           />
         </FormGroup>
         <FormGroup>
-          <Button type="submit">Enviar</Button>
+          <Button className="btn-custom-primary" type="submit">
+            Enviar
+          </Button>
         </FormGroup>
       </Form>
     );
 
     return (
-      <>
+      <Jump>
         <h4 style={{ textAlign: 'left' }}>Editar Foto</h4>
         <div className="delete-account-confirm">
           {this.state.uploading ? (
@@ -62,7 +65,7 @@ class EditPicture extends React.Component {
             formPicture
           )}
         </div>
-      </>
+      </Jump>
     );
   }
 }

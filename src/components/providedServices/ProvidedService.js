@@ -6,26 +6,28 @@ function ProvidedService(props) {
   const styleCol = {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    padding: 0
   };
 
   const styleServices = {
-    margin: 10 + 'px',
-    width: 32 + 'px',
-    height: 32 + 'px',
-    borderRadius: 15 + 'px'
+    margin: '10px',
+    width: '32px',
+    height: '32px',
+    borderRadius: '15px'
   };
 
   return (
     <>
-      <Row>
-        <Col sm="2" style={styleCol}>
+      <Row style={{ height: '100%', alignItems: 'center' }}>
+        <Col style={styleCol}>
           <Link to={`profile/${props.user.id}`}>
             <Media
+              className="username-image"
               style={{
-                borderRadius: 30 + 'px',
-                width: 64 + 'px',
-                height: 64 + 'px'
+                borderRadius: '30px',
+                width: '64px',
+                height: '64px'
               }}
               object
               src={props.user.profileImg}

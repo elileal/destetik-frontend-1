@@ -2,6 +2,7 @@ import React from 'react';
 import SideMenu from 'react-sidemenu';
 import { Redirect } from 'react-router-dom';
 import { Media } from 'reactstrap';
+import Slide from 'react-reveal/Slide';
 
 class SidebarMenu extends React.Component {
   state = {
@@ -56,20 +57,22 @@ class SidebarMenu extends React.Component {
 
   render() {
     return (
-      <div className="side-menu-container">
-        {this.handleRedirect()}
-        <Media
-          className="profile-edit-image"
-          object
-          src={this.props.profileImg}
-        />
-        <SideMenu
-          theme="destetik"
-          activeItem={this.state.activeItem}
-          items={this.state.itemsMenu}
-          onMenuItemClick={this.onClickItem}
-        />
-      </div>
+      <Slide left>
+        <div className="side-menu-container">
+          {this.handleRedirect()}
+          <Media
+            className="profile-edit-image"
+            object
+            src={this.props.profileImg}
+          />
+          <SideMenu
+            theme="destetik"
+            activeItem={this.state.activeItem}
+            items={this.state.itemsMenu}
+            onMenuItemClick={this.onClickItem}
+          />
+        </div>
+      </Slide>
     );
   }
 }

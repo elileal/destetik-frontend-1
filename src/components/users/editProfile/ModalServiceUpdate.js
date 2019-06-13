@@ -40,7 +40,9 @@ class ModalService extends React.Component {
               <FormGroup
                 style={{ display: 'flex', justifyContent: 'flex-end' }}
               >
-                <Button type="submit">Atualizar</Button>
+                <Button className="btn-custom-primary" type="submit">
+                  Atualizar
+                </Button>
               </FormGroup>
             </Form>
           </ModalBody>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Row, Table } from 'reactstrap';
+import { Row, Table } from 'reactstrap';
 import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
 import { connect } from 'react-redux';
@@ -122,15 +122,10 @@ export class AddService extends Component {
 
   render() {
     const styleContainer = {
-      height: 70 + '%',
+      height: 80 + '%',
       display: 'flex',
       justifyContent: 'center',
       padding: '10px'
-    };
-
-    const styleButton = {
-      display: 'flex',
-      justifyContent: 'center'
     };
 
     const styleFloat = {
@@ -174,12 +169,13 @@ export class AddService extends Component {
           </Table>
         </Row>
         <Row style={styleFloat}>
-          <Fab size="medium" onClick={this.toggle}>
+          <Fab
+            className="btn-custom-primary"
+            size="medium"
+            onClick={this.toggle}
+          >
             <Icon>add_icon</Icon>
           </Fab>
-        </Row>
-        <Row style={styleButton}>
-          <Button>Salvar</Button>
         </Row>
         <ModalService
           services={this.state.services}
