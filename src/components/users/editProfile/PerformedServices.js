@@ -141,7 +141,7 @@ export class PerformedServices extends Component {
           submitRating={this.submitRating}
         />
         <ConfirmModal
-          message="Sua avaliação foi enviada"
+          message="Sua avaliação foi enviada."
           open={this.state.showModal.confirmModal}
           toggle={this.toggleModal}
         />
