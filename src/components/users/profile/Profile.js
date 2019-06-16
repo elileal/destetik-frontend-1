@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Media } from 'reactstrap';
-import StarRatings from 'react-star-ratings';
+import StarRatingComponent from 'react-star-rating-component';
 import Api from '../../../services/Api/index';
-import Map from './Map';
 
+import Map from './Map';
 import DisplayInfo from './DisplayInfo';
 import DisplayProvidedService from './DisplayProvidedService';
 
@@ -24,6 +24,7 @@ export class Profile extends Component {
       user: response,
       geoLocation: response.address.geoLocation
     });
+    console.log(response);
   }
 
   _renderMap() {
@@ -34,7 +35,7 @@ export class Profile extends Component {
     return '';
   }
 
-  _renderAddres() {
+  _renderAddress() {
     if (this.state.user.address) {
       const { address } = this.state.user;
       return `${address.street}, ${address.houseNumber} - ${
@@ -74,24 +75,28 @@ export class Profile extends Component {
         </Row>
         <Row className="mt-1 mb-1" style={{ justifyContent: 'flex-end' }}>
           <Col sm={4}>
-            <DisplayInfo colorButton="info" info="Email" body={user.email} />{' '}
             <DisplayInfo
-              colorButton="primary"
+              buttonStyle="btn-custom-primary"
+              info="Email"
+              body={user.email}
+            />{' '}
+            <DisplayInfo
+              buttonStyle="btn-custom-secondary"
               info="Telefone"
               body={user.phone ? user.phone : 'Telefone não adicionado'}
             />
           </Col>
         </Row>
         <h2>{user.name}</h2>
-        <StarRatings
-          starDimension="20px"
-          rating={user.rating}
-          starRatedColor="grey"
-          numberOfStars={5}
+        <StarRatingComponent
+          name="star-rating"
+          value={user.rating}
+          emptyStarColor="grey"
+          starColor="#d46da9"
         />
         <h6>{user.qtEvaluation} Avaliações</h6>
         <Row className="profile-row mt-4 mb-4">{servicesContent}</Row>
-        <h6>{this._renderAddres()}</h6>
+        <h6>{this._renderAddress()}</h6>
         {this._renderMap()}
         <Row className="profile-row mt-2 mb-2">
           Serviços a partir de R$ 30.00

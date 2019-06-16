@@ -11,6 +11,7 @@ import AddService from './AddService';
 import DeleteAccount from './DeleteAccount';
 import EditPicture from './EditPicture';
 import Location from './Location';
+import PerformedServices from './PerformedServices';
 
 export class EditProfile extends Component {
   state = {
@@ -57,6 +58,11 @@ export class EditProfile extends Component {
             exact
             path={`${this.props.match.path}/add-servicos`}
             component={AddService}
+          />
+          <Route
+            exact
+            path={`${this.props.match.path}/historico`}
+            component={PerformedServices}
           />
           <Route
             exact

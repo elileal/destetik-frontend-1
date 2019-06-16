@@ -30,8 +30,8 @@ class SidebarMenu extends React.Component {
         icon: 'fa-briefcase'
       },
       {
-        label: 'Formas de Pagamento',
-        value: 'formas-de-pagamento',
+        label: 'Histórico',
+        value: 'historico',
         icon: 'fa-comments-dollar'
       },
       {

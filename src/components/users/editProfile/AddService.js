@@ -48,6 +48,19 @@ export class AddService extends Component {
     }));
   };
 
+  async componentDidMount() {
+    const response = await Api.ProvidedServices.getAvailable();
+    const services = response;
+    this.setState({ services });
+    const responseProvided = await Api.ProvidedServices.show();
+    const providedServices = responseProvided.map(providedService => ({
+      id: providedService._id,
+      name: providedService.serviceId.name,
+      price: providedService.price
+    }));
+    this.setState({ providedServices });
+  }
+
   async componentDidUpdate() {
     const response = await Api.ProvidedServices.getAvailable();
     const services = response;
