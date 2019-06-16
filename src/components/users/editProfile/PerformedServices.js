@@ -28,6 +28,8 @@ export class PerformedServices extends Component {
       servicesAsProvider,
       performedServices: servicesAsClient
     });
+    console.log(servicesAsClient);
+    console.log(servicesAsProvider);
   }
 
   toggleModal = (e, modalName) => {
@@ -119,9 +121,9 @@ export class PerformedServices extends Component {
             <tbody>
               {this.state.performedServices.map(performedService => (
                 <tr key={performedService._id} data-key={performedService._id}>
-                  <td>Nome do Serviço</td>
-                  <td>Preço Pago</td>
-                  <td>Usuário que fez o serviço</td>
+                  <td>{performedService.providedServiceId.serviceId.name}</td>
+                  <td>R$ {performedService.providedServiceId.price}</td>
+                  <td>{performedService.providedServiceId.userId.name}</td>
                   <td>
                     <p>
                       <i
