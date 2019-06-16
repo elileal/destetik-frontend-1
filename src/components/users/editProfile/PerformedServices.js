@@ -28,8 +28,6 @@ export class PerformedServices extends Component {
       servicesAsProvider,
       performedServices: servicesAsClient
     });
-    console.log(servicesAsClient);
-    console.log(servicesAsProvider);
   }
 
   toggleModal = (e, modalName) => {
