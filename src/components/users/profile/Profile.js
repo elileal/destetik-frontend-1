@@ -22,7 +22,9 @@ export class Profile extends Component {
     const response = await Api.Users.show(userId);
     this.setState({
       user: response,
-      geoLocation: response.address.geoLocation
+      geoLocation: response.address
+        ? response.address.geoLocation
+        : { lng: 0, lat: 0 }
     });
     console.log(response);
   }
@@ -94,7 +96,7 @@ export class Profile extends Component {
           emptyStarColor="grey"
           starColor="#d46da9"
         />
-        <h6>{user.qtEvaluation} Avaliações</h6>
+        <h6>{user.rates ? user.rates.length : '0'} Avaliações</h6>
         <Row className="profile-row mt-4 mb-4">{servicesContent}</Row>
         <h6>{this._renderAddress()}</h6>
         {this._renderMap()}
