@@ -78,7 +78,6 @@ export class Profile extends Component {
 
   handleContractService = async e => {
     const contractService = {
-      clientId: this.state.user._id,
       providedServiceId: this.state.contractService
     };
     const response = await Api.PerformedServices.contractService(
@@ -86,7 +85,6 @@ export class Profile extends Component {
     );
     this.toggleModal(e, 'contract');
     this.toggleModal(e, 'confirmModal');
-    console.log(response);
   };
 
   render() {
