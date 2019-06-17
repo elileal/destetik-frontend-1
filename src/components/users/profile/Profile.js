@@ -1,33 +1,56 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Media } from 'reactstrap';
+import { Container, Row, Col, Media, Button } from 'reactstrap';
 import StarRatingComponent from 'react-star-rating-component';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import Api from '../../../services/Api/index';
 
 import Map from './Map';
 import DisplayInfo from './DisplayInfo';
 import DisplayProvidedService from './DisplayProvidedService';
+import ModalContractService from './ModalContractService';
+import ConfirmModal from '../editProfile/ConfirmModal';
 
 export class Profile extends Component {
   state = {
-    loading: false,
     user: {},
     geoLocation: {
       lat: 0,
       lng: 0
-    }
+    },
+    showModal: {
+      contract: false,
+      confirmModal: false
+    },
+    contractService: '',
+    services: {}
   };
 
   async componentDidMount() {
     const userId = this.props.match.params.id;
     const response = await Api.Users.show(userId);
+    const services = {};
+    response.services.forEach(
+      service => (services[service.serviceId.name] = service._id)
+    );
     this.setState({
       user: response,
+      services,
       geoLocation: response.address
         ? response.address.geoLocation
         : { lng: 0, lat: 0 }
     });
-    console.log(response);
   }
+
+  toggleModal = (e, modalName) => {
+    this.setState({
+      showModal: {
+        ...this.state.showModal,
+        [modalName]: !this.state.showModal[modalName]
+      }
+    });
+  };
 
   _renderMap() {
     if (this.state.user.address) {
@@ -46,6 +69,25 @@ export class Profile extends Component {
     }
     return '';
   }
+
+  handleServiceOnChange = e => {
+    this.setState({
+      contractService: this.state.services[e.target.value]
+    });
+  };
+
+  handleContractService = async e => {
+    const contractService = {
+      clientId: this.state.user._id,
+      providedServiceId: this.state.contractService
+    };
+    const response = await Api.PerformedServices.contractService(
+      contractService
+    );
+    this.toggleModal(e, 'contract');
+    this.toggleModal(e, 'confirmModal');
+    console.log(response);
+  };
 
   render() {
     const { user } = this.state;
@@ -103,9 +145,40 @@ export class Profile extends Component {
         <Row className="profile-row mt-2 mb-2">
           Serviços a partir de R$ 30.00
         </Row>
+        <Row className="profile-row mt-4">
+          {this.props.auth.isAuthenticated ? (
+            <Button
+              className="btn-custom-primary-outline"
+              onClick={e => this.toggleModal(e, 'contract')}
+            >
+              Contratar Serviços
+            </Button>
+          ) : (
+            ''
+          )}
+        </Row>
+        <ModalContractService
+          open={this.state.showModal.contract}
+          toggle={this.toggleModal}
+          services={user.services ? user.services : []}
+          handleServiceOnChange={this.handleServiceOnChange}
+          handleContractService={this.handleContractService}
+        />
+        <ConfirmModal
+          open={this.state.showModal.confirmModal}
+          toggle={this.toggleModal}
+          message="Serviço adquirido com sucesso."
+        />
       </Container>
     );
   }
 }
+Profile.propTypes = {
+  auth: PropTypes.object.isRequired
+};
 
-export default Profile;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Profile);

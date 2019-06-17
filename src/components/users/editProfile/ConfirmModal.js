@@ -3,11 +3,7 @@ import { Modal, ModalBody, ModalFooter, Button } from 'reactstrap';
 
 function ConfirmModal(props) {
   return (
-    <Modal
-      isOpen={props.open}
-      toggle={e => props.toggle(e, 'confirmModal')}
-      centered
-    >
+    <Modal isOpen={props.open} toggle={e => props.toggle(e, 'confirmModal')}>
       <ModalBody className="modal-container">
         <i className="material-icons confirm-icon-modal icon-modal modal-elements">
           check_circle
@@ -17,7 +13,7 @@ function ConfirmModal(props) {
       </ModalBody>
       <ModalFooter>
         <Button
-          color="secondary"
+          className="btn-custom-primary-outline"
           onClick={e => props.toggle(e, 'confirmModal')}
         >
           Ok
