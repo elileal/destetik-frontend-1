@@ -91,12 +91,23 @@ code {
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
+  margin: 80px 0 10px 0;
 }
 
 .profile-image {
   border-radius: 30px;
   width: 96px;
   height: 96px;
+}
+
+.profile-image-rating {
+  border-radius: 50px;
+  width: 96px;
+  height: 96px;
+}
+
+.dv-star-rating-star i {
+  font-size: 40px;
 }
 
 /* ----Profile Edit---- */
@@ -125,14 +136,20 @@ code {
   padding: 20px;
 }
 
-.modal-confirm-elements {
+.modal-elements {
   margin-bottom: 20px;
 }
 
-.confirm-icon-modal {
+.icon-modal {
   font-size: 64px;
   margin-top: 10px;
+}
+.confirm-icon-modal {
   color: #c3f0b8;
+}
+
+.refused-icon-modal {
+  color: #f37d7d;
 }
 
 /* --SideMenu-- */

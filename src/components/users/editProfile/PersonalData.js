@@ -55,7 +55,11 @@ export class PersonalData extends Component {
 
     return (
       <Slide right>
-        <ConfirmModal visible={visible} toggle={this.toggle} />
+        <ConfirmModal
+          message="Dados atualizados com sucesso."
+          visible={visible}
+          toggle={this.toggle}
+        />
         <h4 style={{ textAlign: 'left' }}>Dados Pessoais</h4>
         <Form
           style={{

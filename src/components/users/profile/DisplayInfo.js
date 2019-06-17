@@ -4,7 +4,7 @@ import { Button, UncontrolledPopover, PopoverBody } from 'reactstrap';
 function DisplayInfo(props) {
   return (
     <>
-      <Button id={props.info} color={props.colorButton} outline>
+      <Button id={props.info} className={props.buttonStyle}>
         {props.info}
       </Button>
       <UncontrolledPopover

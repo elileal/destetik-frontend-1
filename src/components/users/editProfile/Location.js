@@ -76,7 +76,11 @@ class Location extends Component {
 
     return (
       <>
-        <ConfirmModal visible={visible} toggle={this.toggle} />
+        <ConfirmModal
+          message="Dados atualizados com sucesso."
+          visible={visible}
+          toggle={this.toggle}
+        />
         <h4 style={{ textAlign: 'left' }}>Localização</h4>
         <Form
           style={{
