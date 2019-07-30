@@ -33,6 +33,24 @@ export const loginUser = userData => async dispatch => {
   }
 };
 
+export const loginWithFacebook = userData => async dispatch => {
+  try {
+    await Api.Users.loginWithFacebook(userData);
+    // if (response.status === 200) {
+    //   const { token } = response.data;
+    //   localStorage.setItem('jwtToken', token);
+    //   setAuthToken(token);
+    //   const decoded = jwtDecode(token);
+    //   dispatch(setCurrentUser(decoded));
+    // }
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    });
+  }
+};
+
 export const logoutUser = () => dispatch => {
   localStorage.removeItem('jwtToken');
   setAuthToken(false);

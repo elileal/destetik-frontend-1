@@ -15,6 +15,8 @@ const register = async userData =>
 
 const login = async userData => await api.post('api/user/login', userData);
 
+const loginWithFacebook = async userData => console.log(userData);
+
 const current = async () => {
   const response = await api.get('/api/user/current');
   return response.data;
@@ -38,6 +40,7 @@ export default {
   show,
   register,
   login,
+  loginWithFacebook,
   current,
   update,
   updateImage,
