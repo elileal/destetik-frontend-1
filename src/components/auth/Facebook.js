@@ -7,19 +7,14 @@ function Facebook({ loginAction }) {
   };
 
   const responseFacebook = response => {
-    const { userID, name, email, picture } = response;
-    const user = {
-      userID,
-      name,
-      email,
-      picture: picture.data.url
-    };
-    loginAction(user);
+    const { accessToken } = response;
+    loginAction(accessToken);
   };
 
+  const facebookApiKey = process.env.REACT_APP_FACEBOOK_API_KEY;
   return (
     <FacebookLogin
-      appId="503928410376396"
+      appId={facebookApiKey}
       autoLoad={false}
       fields="name,email,picture"
       onClick={componentClicked}
