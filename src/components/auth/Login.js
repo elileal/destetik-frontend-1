@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Form, Button, FormGroup, Input, FormFeedback } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions/authActions';
+import { loginUser, loginWithFacebook } from '../../actions/authActions';
 import checkValidation from '../../utils/checkValidation';
 import Fade from 'react-reveal/Fade';
+import Facebook from './Facebook';
 
 export class Login extends Component {
   state = {
@@ -80,9 +81,18 @@ export class Login extends Component {
               />
               <FormFeedback>{errors.password}</FormFeedback>
             </FormGroup>
-            <Button className="btn-custom-primary-outline" type="submit">
-              Login
-            </Button>
+            <FormGroup row>
+              <Button
+                className="btn-custom-primary-outline"
+                type="submit"
+                style={{ width: '100%' }}
+              >
+                Login
+              </Button>
+            </FormGroup>
+            <FormGroup row style={{ justifyContent: 'center' }}>
+              <Facebook loginAction={this.props.loginWithFacebook} />
+            </FormGroup>
             <p style={{ marginTop: 16 + 'px' }}>
               Ainda não registrado? <a href="/signup">Registre-se aqui.</a>
             </p>
@@ -95,6 +105,7 @@ export class Login extends Component {
 
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
+  loginWithFacebook: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -106,5 +117,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loginUser }
+  { loginUser, loginWithFacebook }
 )(Login);

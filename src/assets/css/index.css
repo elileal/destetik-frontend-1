@@ -3,6 +3,8 @@
   --btn-purple-primary-light: #d46da9;
   --btn-purple-secondary: #3f2049;
   --btn-purple-secondary-hover: #27112e;
+  --btn-facebook: #4d6aba;
+  --btn-facebook-dark: #2f4174;
 }
 
 body {
@@ -80,6 +82,17 @@ code {
 .btn-custom-secondary:hover {
   background-color: var(--btn-purple-secondary-hover) !important;
   border-color: var(--btn-purple-secondary-hover) !important;
+}
+
+.btn-facebook {
+  background-color: var(--btn-facebook) !important;
+  border-color: var(--btn-facebook) !important;
+  border-radius: 50px !important;
+}
+
+.btn-facebook:hover {
+  background-color: var(--btn-facebook-dark) !important;
+  border-color: var(--btn-facebook-dark) !important;
 }
 
 /* ----Profile View---- */
