@@ -45,10 +45,7 @@ export class Register extends Component {
     const validation = checkValidation(errors);
     return (
       <Fade top>
-        <div
-          className="centered-container"
-          style={{ width: '400px', marginTop: '3%' }}
-        >
+        <div className="centered-container" style={{ width: '400px' }}>
           <Form
             className="register-form"
             method="POST"
