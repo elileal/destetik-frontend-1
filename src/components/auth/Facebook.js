@@ -1,5 +1,5 @@
 import React from 'react';
-import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
 function Facebook({ loginAction }) {
   const componentClicked = () => {
@@ -19,9 +19,14 @@ function Facebook({ loginAction }) {
       fields="name,email,picture"
       onClick={componentClicked}
       callback={responseFacebook}
-      textButton=""
-      icon="fa-facebook"
-      cssClass="btn btn-secondary btn-facebook"
+      render={renderProps => (
+        <button
+          className="btn btn-secondary btn-facebook social-media-buttons"
+          onClick={renderProps.onClick}
+        >
+          Login com Facebook
+        </button>
+      )}
     />
   );
 }

@@ -6,6 +6,7 @@ import { loginUser, loginWithFacebook } from '../../actions/authActions';
 import checkValidation from '../../utils/checkValidation';
 import Fade from 'react-reveal/Fade';
 import Facebook from './Facebook';
+import Google from './Google';
 
 export class Login extends Component {
   state = {
@@ -44,8 +45,7 @@ export class Login extends Component {
   render() {
     const headerStyle = {
       color: '#495057',
-      fontSize: '70px',
-      marginBottom: '35px'
+      fontSize: '70px'
     };
 
     const { errors } = this.props;
@@ -54,11 +54,15 @@ export class Login extends Component {
     const { email, password } = this.state;
     return (
       <Fade top>
-        <div className="centered-container">
+        <div
+          className="centered-container"
+          style={{ alignItems: 'space-around' }}
+        >
           <h1 className="logo" style={headerStyle}>
             Destetik
           </h1>
           <Form method="POST" onSubmit={this.handleSubmit}>
+            <h5>Login</h5>
             <FormGroup row>
               <Input
                 {...validation.emailValidation}
@@ -90,7 +94,12 @@ export class Login extends Component {
                 Login
               </Button>
             </FormGroup>
-            <FormGroup row style={{ justifyContent: 'center' }}>
+            <h5>Login</h5>
+            <p>Faça login com uma de suas redes sociais</p>
+            <FormGroup row>
+              <Google />
+            </FormGroup>
+            <FormGroup row>
               <Facebook loginAction={this.props.loginWithFacebook} />
             </FormGroup>
             <p style={{ marginTop: 16 + 'px' }}>
