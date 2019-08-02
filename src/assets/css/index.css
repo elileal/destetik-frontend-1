@@ -5,6 +5,8 @@
   --btn-purple-secondary-hover: #27112e;
   --btn-facebook: #4d6aba;
   --btn-facebook-dark: #2f4174;
+  --btn-google: #f8f8f8;
+  --btn-google-dark: #cacaca;
 }
 
 body {
@@ -33,15 +35,15 @@ code {
 
 .navbar-destetik {
   padding: 0px 20px !important;
+  height: 7vh;
   box-shadow: 0px 5px 10px -2px rgba(189, 189, 189, 0.3);
 }
 
 .main-container {
-  padding-top: 30px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  height: 90%;
+  height: 93vh;
 }
 
 .centered-container {
@@ -84,15 +86,31 @@ code {
   border-color: var(--btn-purple-secondary-hover) !important;
 }
 
+/* ----Social Media Buttons---- */
+.social-media-buttons {
+  border-radius: 5px !important;
+  width: 100%;
+}
+
 .btn-facebook {
   background-color: var(--btn-facebook) !important;
   border-color: var(--btn-facebook) !important;
-  border-radius: 50px !important;
+}
+
+.btn-google {
+  background-color: var(--btn-google) !important;
+  border-color: var(--btn-google) !important;
+  color: #767676 !important;
 }
 
 .btn-facebook:hover {
   background-color: var(--btn-facebook-dark) !important;
   border-color: var(--btn-facebook-dark) !important;
+}
+
+.btn-google:hover {
+  background-color: var(--btn-google-dark) !important;
+  border-color: var(--btn-google-dark) !important;
 }
 
 /* ----Profile View---- */
@@ -242,7 +260,9 @@ code {
   display: flex;
   flex-direction: column;
   width: 80%;
+  height: 100%;
   align-items: center;
+  justify-content: center;
 }
 
 .username-link {
