@@ -96,9 +96,9 @@ export class Login extends Component {
             </FormGroup>
             <h5>Login</h5>
             <p>Faça login com uma de suas redes sociais</p>
-            <FormGroup row>
+            {/* <FormGroup row>
               <Google />
-            </FormGroup>
+            </FormGroup> */}
             <FormGroup row>
               <Facebook loginAction={this.props.loginWithFacebook} />
             </FormGroup>
